@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from './components/Home';  
+import Nav from './components/Nav';  
+import Services from './components/Services';
+import About from './components/About';
+import Contact from './components/Contact';
+import Dashboard from './components/Dashboard';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Nav />
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/dashboard" element={<Dashboard />} /> {/* NOTE: Will be deleted and a sub domain will be made for the owners to use */}
+        </Routes>
+      </Router>
     </div>
   );
 }
