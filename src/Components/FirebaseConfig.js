@@ -6,7 +6,13 @@
 
 // Your web app's Firebase configuration
     const firebaseConfig = {
-        HIDDEN
+        apiKey: "AIzaSyAjyJCPN7IASznl_zoDzAPXQGP4QP1z40A",
+        authDomain: "rounding-third-llc.firebaseapp.com",
+        projectId: "rounding-third-llc",
+        storageBucket: "rounding-third-llc.firebasestorage.app",
+        messagingSenderId: "76420295271",
+        appId: "1:76420295271:web:cededa55614299e47002c2",
+        measurementId: "G-MJ8SD0FZ4L"
     };
 
 // Initialize Firebase
