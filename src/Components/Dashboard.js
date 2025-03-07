@@ -7,7 +7,7 @@ function Dashboard() {
     return (
         <div className="Dashboard-container">
             <h1 className='Dashboard-h1'>Admin Dashboard</h1>
-        
+
         </div>
     );
 }
