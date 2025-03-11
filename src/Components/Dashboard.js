@@ -3,16 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
 
 function Dashboard() {
-    const navigate = useNavigate();
-
-    // Dummy data states (Replace with real API calls later)
-    const [accountRequests, setAccountRequests] = useState([]);
-    const [orders, setOrders] = useState([]);
-    const [customers, setCustomers] = useState([]);
-    const [jobs, setJobs] = useState([]);
-    const [revenue, setRevenue] = useState(0);
-    const [trucks, setTrucks] = useState([]);
-    const [employees, setEmployees] = useState([]);
+    //States
+        const navigate = useNavigate();
+        const [accountRequests, setAccountRequests] = useState([]);
+        const [orders, setOrders] = useState([]);
+        const [customers, setCustomers] = useState([]);
+        const [jobs, setJobs] = useState([]);
+        const [revenue, setRevenue] = useState(0);
+        const [trucks, setTrucks] = useState([]);
+        const [employees, setEmployees] = useState([]);
 
     // Simulating API calls
     useEffect(() => {
@@ -51,7 +50,11 @@ function Dashboard() {
 
     return (
         <div className="Dashboard-container">
-            <h1 className="Dashboard-h1">Admin Dashboard</h1>
+            <div>
+                <h1 className="Dashboard-h1">Dashboard</h1>
+                <h1 className='Dashboard-h1'>*LOGO*</h1>
+            </div>
+
 
             {/* Account Requests Section */}
             <div className="Dashboard-section">
@@ -129,6 +132,24 @@ function Dashboard() {
                         ))}
                     </ul>
                 }
+            </div>
+
+            <div className='Dashboard-section-spreadsheet'>
+                <h1 className='Dashboard-h1'>Tracking Sheet</h1>
+                <table>
+                    <tr>
+                        <th>Truck ID</th>
+                        <th>Status</th>
+                        <th>Location</th>
+                    </tr>
+                    {trucks.map(truck => (
+                        <tr key={truck.id}>
+                            <td>{truck.id}</td>
+                            <td>{truck.status}</td>
+                            <td>{truck.location}</td>
+                        </tr>
+                    ))}
+                </table>
             </div>
         </div>
     );
