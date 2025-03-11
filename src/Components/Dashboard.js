@@ -48,13 +48,26 @@ function Dashboard() {
         ]);
     }, []);
 
+    const approveRequest = (id) => {
+        setAccountRequests((prevRequests) =>
+            prevRequests.map((req) =>
+                req.id === id ? { ...req, status: "approved" } : req
+            )
+        );
+    };
+
+    const rejectRequest = (id) => {
+        setAccountRequests((prevRequests) =>
+            prevRequests.filter((req) => req.id !== id)
+        );
+    };
+
     return (
         <div className="Dashboard-container">
             <div>
                 <h1 className="Dashboard-h1">Dashboard</h1>
                 <h1 className='Dashboard-h1'>*LOGO*</h1>
             </div>
-
 
             {/* Account Requests Section */}
             <div className="Dashboard-section">
@@ -124,14 +137,7 @@ function Dashboard() {
 
             {/* Truck Tracking */}
             <div className="Dashboard-section">
-                <h2>Truck & Equipment Tracking</h2>
-                {trucks.length === 0 ? <p>No trucks available.</p> :
-                    <ul>
-                        {trucks.map(truck => (
-                            <li key={truck.id}>{truck.id} - {truck.status} - {truck.location}</li>
-                        ))}
-                    </ul>
-                }
+
             </div>
 
             <div className='Dashboard-section-spreadsheet'>
