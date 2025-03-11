@@ -1,0 +1,114 @@
+/*
+    -------------------
+    - Dashboard Page --
+    -------------------
+*/
+
+/* --- Dashboard Page Title --- */
+    .Dashboard-h1 {
+        text-align: center;
+    }
+
+/* --- Dashboard Section --- */
+    .Dashboard-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .Dashboard-section {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        transition: 0.3s ease-in-out;
+        min-height: 150px; /* Ensure all cards have the same height */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .Dashboard-section:hover {
+        transform: scale(1.02);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .Dashboard-section h2 {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 8px;
+    }
+
+    .Dashboard-section p {
+        font-size: 14px;
+        color: #666;
+    }
+
+    .Dashboard-section li{
+        all: unset;
+        font-size: 12px;
+    }
+
+/* --- Tracking Table --- */
+    /* Container */
+        .Dashboard-section-spreadsheet{
+            width: 100vw;  /* Full width of the screen */
+            max-width: 100%;
+            padding: 20px;
+            overflow-x: auto; /* Allows horizontal scrolling if needed */
+        }
+
+    /* Table container for responsiveness */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            padding: 10px;
+        }
+
+    /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+    /* Table header */
+        th {
+            background-color: #5b7359;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-size: 16px;
+            width: 100%;
+        }
+
+    /* Table rows */
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+    /* Alternate row colors for better readability */
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+    /* Hover effect on rows */
+        tr:hover {
+            background-color: #f1f1f1;
+            transition: 0.3s;
+        }
+
+    /* Make table responsive on smaller screens */
+        @media screen and (max-width: 600px) {
+            th, td {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
