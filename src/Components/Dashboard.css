@@ -113,8 +113,38 @@
             }
         }
 
+        .Dashboard-section li{
+            display: block;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+            width: 120%; 
+            margin-left: -20%; 
+            text-align: center; 
+        }
 
 /* --- Account Requests --- */
+        .accept-button, .reject-button {
+            all: unset;
+        }
+
+        .bi.bi-check-square-fill {
+            color: green;
+            padding-left: 5px;
+        }
+
+        .bi.bi-check-square-fill:hover {
+            color: rgb(2, 102, 2);
+        }
+
+        .bi.bi-x-square-fill {
+            color: red;
+            padding-left: 5px;
+        }
+
+        .bi.bi-x-square-fill:hover {
+            color: rgb(148, 1, 1);
+        }
+
 
 /* --- Order Section -- */
 
@@ -127,4 +157,3 @@
 /* --- Financial Overview Section -- */
 
 /* --- Employee Management Section -- */
-
