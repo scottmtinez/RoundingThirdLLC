@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function Dashboard() {
     //States
@@ -48,18 +51,14 @@ function Dashboard() {
         ]);
     }, []);
 
-    const approveRequest = (id) => {
-        setAccountRequests((prevRequests) =>
-            prevRequests.map((req) =>
-                req.id === id ? { ...req, status: "approved" } : req
-            )
-        );
+    const handleAccept = (id) => {
+        console.log(`Accepted request with ID: ${id}`);
+        // Add logic to approve user account and update the database
     };
-
-    const rejectRequest = (id) => {
-        setAccountRequests((prevRequests) =>
-            prevRequests.filter((req) => req.id !== id)
-        );
+    
+    const handleReject = (id) => {
+        console.log(`Rejected request with ID: ${id}`);
+        // Add logic to remove the request from the database
     };
 
     return (
@@ -72,13 +71,23 @@ function Dashboard() {
             {/* Account Requests Section */}
             <div className="Dashboard-section">
                 <h2>Account Requests</h2>
-                {accountRequests.length === 0 ? <p>No account requests at this time.</p> :
+                {accountRequests.length === 0 ? (
+                    <p>No account requests at this time.</p>
+                ) : (
                     <ul>
                         {accountRequests.map(req => (
-                            <li key={req.id}>{req.name} - {req.email}</li>
+                            <li className='Dashboard-Account-Requests' key={req.id}>
+                                {req.name} - {req.email}
+                                    <button className="accept-button" onClick={() => handleAccept(req.id)}>
+                                        <i class="bi bi-check-square-fill"></i>
+                                    </button>
+                                    <button className="reject-button" onClick={() => handleReject(req.id)}>
+                                        <i class="bi bi-x-square-fill"></i>
+                                    </button>
+                            </li>
                         ))}
                     </ul>
-                }
+                )}
             </div>
 
             {/* Orders Section */}
