@@ -51,6 +51,11 @@
         font-size: 12px;
     }
 
+    .Dashboard-logo{
+        width: 200px;
+        height: auto;
+    }
+
 /* --- Tracking Table --- */
     /* Container */
         .Dashboard-section-spreadsheet{
@@ -157,5 +162,3 @@
 /* --- Financial Overview Section -- */
 
 /* --- Employee Management Section -- */
-
-/* --- --- */
