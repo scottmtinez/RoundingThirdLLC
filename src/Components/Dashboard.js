@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { auth, db } from './FirebaseConfig';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { collection, getDocs, deleteDoc, updateDoc, doc } from 'firebase/firestore';
 import './Dashboard.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import logo from '../images/Logo.png';
 
 function Dashboard() {
     //States
@@ -16,12 +20,64 @@ function Dashboard() {
         const [trucks, setTrucks] = useState([]);
         const [employees, setEmployees] = useState([]);
 
+    // Fetch account requests from Firebase Firestore
+        useEffect(() => {
+            const fetchAccountRequests = async () => {
+                try {
+                    const querySnapshot = await getDocs(collection(db, 'accountRequests'));
+                    const requests = querySnapshot.docs.map(doc => ({
+                        id: doc.id,
+                        ...doc.data()
+                    }));
+                    setAccountRequests(requests);
+                } catch (error) {
+                    console.error('Error fetching account requests:', error);
+                }
+            };
+
+            fetchAccountRequests();
+        }, []);
+
+    // Handle Accept
+        const handleAccept = async (email, password) => {
+            try {
+                // Create the user in Firebase Authentication
+                await createUserWithEmailAndPassword(auth, email, password);
+                
+                // Update the Firestore document to mark it as 'approved'
+                const userRef = doc(db, 'accountRequests', email);
+                await updateDoc(userRef, { status: 'approved' });
+                
+                alert("Account approved!");
+                // Optionally, re-fetch the requests after updating
+                const updatedRequests = accountRequests.filter(req => req.email !== email);
+                setAccountRequests(updatedRequests);
+            } catch (error) {
+                alert("Error approving account: " + error.message);
+            }
+        };
+    
+    // Handle Reject
+        const handleReject = async (email) => {
+            try {
+                // Delete the request from Firestore
+                const userRef = doc(db, 'accountRequests', email);
+                await deleteDoc(userRef);
+                
+                alert("Account request rejected.");
+                // Remove the rejected request from the UI
+                const updatedRequests = accountRequests.filter(req => req.email !== email);
+                setAccountRequests(updatedRequests);
+            } catch (error) {
+                alert("Error rejecting account: " + error.message);
+            }
+        };
+
+
+
     // Simulating API calls
     useEffect(() => {
-        setAccountRequests([
-            { id: 1, name: "John Doe", email: "john@example.com" },
-            { id: 2, name: "Jane Smith", email: "jane@example.com" },
-        ]);
+
 
         setOrders([
             { id: 101, customer: "Alice", status: "Pending", amount: "$300" },
@@ -51,21 +107,12 @@ function Dashboard() {
         ]);
     }, []);
 
-    const handleAccept = (id) => {
-        console.log(`Accepted request with ID: ${id}`);
-        // Add logic to approve user account and update the database
-    };
-    
-    const handleReject = (id) => {
-        console.log(`Rejected request with ID: ${id}`);
-        // Add logic to remove the request from the database
-    };
-
     return (
         <div className="Dashboard-container">
             <div>
-                <h1 className="Dashboard-h1">Dashboard</h1>
-                <h1 className='Dashboard-h1'>*LOGO*</h1>
+                <h1 className='Dashboard-h1'>
+                    <img src={logo} alt="Company Logo" className="Dashboard-logo" />
+                </h1>
             </div>
 
             {/* Account Requests Section */}
@@ -76,14 +123,14 @@ function Dashboard() {
                 ) : (
                     <ul>
                         {accountRequests.map(req => (
-                            <li className='Dashboard-Account-Requests' key={req.id}>
+                            <li className="Dashboard-Account-Requests" key={req.id}>
                                 {req.name} - {req.email}
-                                    <button className="accept-button" onClick={() => handleAccept(req.id)}>
-                                        <i class="bi bi-check-square-fill"></i>
-                                    </button>
-                                    <button className="reject-button" onClick={() => handleReject(req.id)}>
-                                        <i class="bi bi-x-square-fill"></i>
-                                    </button>
+                                <button className="accept-button" onClick={() => handleAccept(req.id)}>
+                                    <i className="bi bi-check-square-fill"></i>
+                                </button>
+                                <button className="reject-button" onClick={() => handleReject(req.id)}>
+                                    <i className="bi bi-x-square-fill"></i>
+                                </button>
                             </li>
                         ))}
                     </ul>
