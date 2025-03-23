@@ -52,9 +52,11 @@
     }
 
     .Dashboard-logo{
-        width: 200px;
-        height: auto;
+        width: 100%;
+        height: 100%;
+        margin-top: 50px;
     }
+    
 
 /* --- Tracking Table --- */
     /* Container */
@@ -162,3 +164,4 @@
 /* --- Financial Overview Section -- */
 
 /* --- Employee Management Section -- */
+
