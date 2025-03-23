@@ -5,7 +5,7 @@
 */
 
 .nav-container {
-    background-color: #5b7359;
+    background-color: #57776a;
     padding: 10px 20px;
   }
   
@@ -35,6 +35,7 @@
     color: white;
     text-decoration: none;
     font-size: 1rem;
+    font-size: 20px;
   }
   
   .nav-links li a:hover {
@@ -42,9 +43,9 @@
   }
 
   .Nav-logo {
-    width: 100px;
+    width: 250px;
     height: auto;
-}
+  }
 
 .Nav-title {
   font-size: 1.5rem;
