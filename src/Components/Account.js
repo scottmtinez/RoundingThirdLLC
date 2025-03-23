@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth } from './FirebaseConfig';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { auth, db } from './FirebaseConfig'; // Import Firestore db
+import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { collection, addDoc } from 'firebase/firestore'; // Import Firestore functions
 import './Account.css';
 import Dashboard from './Dashboard';
 
@@ -23,18 +24,26 @@ function Account() {
         e.preventDefault();
         try {
             await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-           <Dashboard />
+            navigate('/account'); // Redirect to dashboard after successful login
         } catch (error) {
             alert("Login Failed: " + error.message);
         }
     };
 
-    // Signup function
+    // Signup function to send data to Firestore
     const handleSignup = async (e) => {
         e.preventDefault();
         try {
-            await createUserWithEmailAndPassword(auth, signupEmail, signupPassword);
-            alert("Account created successfully! You can now log in.");
+            // Send the signup data to Firestore (accountRequests collection)
+            const docRef = await addDoc(collection(db, 'accountRequests'), {
+                email: signupEmail,
+                password: signupPassword, // You may want to store this hashed for security purposes
+                status: 'pending', // Set the status as 'pending' when the request is created
+            });
+
+            alert('Account request submitted!'); // Notify the user
+            setSignupEmail('');
+            setSignupPassword('');
         } catch (error) {
             alert("Signup Failed: " + error.message);
         }
