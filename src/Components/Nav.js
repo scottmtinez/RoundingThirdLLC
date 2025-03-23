@@ -9,7 +9,6 @@ function Nav() {
         <div className="logo">
         <Link to="/" className="navbar-logo">
           <img src={logo} alt="Company Logo" className="Nav-logo" />
-          <span className='Nav-title'>Rounding Third LLC</span>
         </Link>
         </div>
         <ul className="nav-links">
