@@ -26,6 +26,9 @@
     list-style: none;
     display: flex;
     gap: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    font-family: 'Antonia', serif;
+    margin-top: 10px;
   }
   
   .nav-links li a {
@@ -37,4 +40,18 @@
   .nav-links li a:hover {
     text-decoration: underline;
   }
-  
+
+  .Nav-logo {
+    width: 100px;
+    height: auto;
+}
+
+.Nav-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+  font-family: 'Antonia', serif;
+}
+
