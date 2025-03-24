@@ -3,48 +3,48 @@ import './Estimate.css';
 
 function Estimate() {
     // State for user inputs
-    const [pickupLocation, setPickupLocation] = useState('');
-    const [dropoffLocation, setDropoffLocation] = useState('');
-    const [homeSize, setHomeSize] = useState('');
-    const [services, setServices] = useState({
-        packing: false,
-        storage: false,
-        furnitureAssembly: false,
-    });
-    const [estimatedCost, setEstimatedCost] = useState(0);
+        const [pickupLocation, setPickupLocation] = useState('');
+        const [dropoffLocation, setDropoffLocation] = useState('');
+        const [homeSize, setHomeSize] = useState('');
+        const [services, setServices] = useState({
+            packing: false,
+            storage: false,
+            furnitureAssembly: false,
+        });
+        const [estimatedCost, setEstimatedCost] = useState(0);
 
     // Pricing Constants
-    const basePrices = {
-        studio: 200,
-        "1-bedroom": 300,
-        "2-bedroom": 500,
-        "3-bedroom": 700,
-        "4+ bedroom": 1000,
-    };
-    const servicePrices = {
-        packing: 100,
-        storage: 150,
-        furnitureAssembly: 75,
-    };
+        const basePrices = {
+            studio: 200,
+            "1-bedroom": 300,
+            "2-bedroom": 500,
+            "3-bedroom": 700,
+            "4+ bedroom": 1000,
+        };
+        const servicePrices = {
+            packing: 100,
+            storage: 150,
+            furnitureAssembly: 75,
+        };
 
     // Function to calculate estimate
-    const calculateEstimate = () => {
-        if (!homeSize) {
-            alert("Please select a home size.");
-            return;
-        }
-
-        let cost = basePrices[homeSize];
-
-        // Add additional services cost
-        Object.keys(services).forEach(service => {
-            if (services[service]) {
-                cost += servicePrices[service];
+        const calculateEstimate = () => {
+            if (!homeSize) {
+                alert("Please select a home size.");
+                return;
             }
-        });
 
-        setEstimatedCost(cost);
-    };
+            let cost = basePrices[homeSize];
+
+            // Add additional services cost
+            Object.keys(services).forEach(service => {
+                if (services[service]) {
+                    cost += servicePrices[service];
+                }
+            });
+
+            setEstimatedCost(cost);
+        };
 
     return (
         <div className="Estimate-container">
