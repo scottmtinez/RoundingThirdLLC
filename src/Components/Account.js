@@ -41,7 +41,7 @@ function Account() {
                 status: 'pending', // Set the status as 'pending' when the request is created
             });
 
-            alert('Account request submitted!'); // Notify the user
+            alert('Account request submitted! Please check in the next few days if your account has been accepted.'); // Notify the user
             setSignupEmail('');
             setSignupPassword('');
         } catch (error) {
@@ -87,3 +87,4 @@ function Account() {
 }
 
 export default Account;
+
