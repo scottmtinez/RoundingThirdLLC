@@ -1,8 +1,126 @@
-/*-----
-
-
+/*
+    -------------------
+    -- Estimate Page --
+    -------------------
 */
 
-/* --- --- */
-
-/* --- --- */
+/* General Container Styles */
+    .Estimate-container {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 30px;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+    
+    .Estimate-h1 {
+        text-align: center;
+        font-size: 36px;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+  
+/* Form Styling */
+    .Estimate-form {
+        background-color: #ffffff;
+        padding: 20px;
+        margin: 0 auto;
+        border-radius: 8px;
+        width: 50%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .Estimate-form label {
+        font-size: 16px;
+        color: #34495e;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    .Estimate-form input,
+    .Estimate-form select {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #bdc3c7;
+        border-radius: 5px;
+        box-sizing: border-box;
+        margin-bottom: 15px;
+    }
+    
+    .Estimate-form input:focus,
+    .Estimate-form select:focus {
+        outline: none;
+        border-color: #5b7359;
+    }
+    
+    .Estimate-services {
+        margin-bottom: 20px;
+    }
+    
+    .Estimate-services label {
+        display: block;
+        font-size: 14px;
+        color: #34495e;
+        margin-bottom: 10px;
+    }
+    
+    .Estimate-services input {
+        margin-right: 10px;
+    }
+    
+    .Estimate-button {
+        background-color: rgb(0, 0, 102);
+        color: #fff;
+        font-size: 16px;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+    
+    .Estimate-button:hover {
+        background-color: rgb(0, 0, 161);
+    }
+  
+/* Estimated Cost Display */
+    .Estimate-result {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #d9f7be;
+        border-radius: 5px;
+        text-align: center;
+    }
+    
+    .Estimate-result h2 {
+        font-size: 24px;
+        color: #2c3e50;
+        margin: 0;
+    }
+  
+/* Responsive Design */
+    @media (max-width: 768px) {
+        .Estimate-form {
+        width: 100%;
+        padding: 15px;
+        }
+    
+        .Estimate-h1 {
+        font-size: 28px;
+        }
+    
+        .Estimate-form label {
+        font-size: 14px;
+        }
+    
+        .Estimate-form input,
+        .Estimate-form select {
+        font-size: 14px;
+        }
+    
+        .Estimate-button {
+        font-size: 14px;
+        }
+    }
+    
