@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+/* Footer Styles */
+  .Footer {
+    background-color: #57776a;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    position: relative;
+    margin-top: 25px;
+    width: 100%;
+  }
+
+/* Footer Text */
+  .Footer {
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+  }
