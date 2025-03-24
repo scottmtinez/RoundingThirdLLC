@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { auth, db } from './components/FirebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
+import './App.css';
 
 // Import your components
 import Home from './components/Home';
@@ -11,7 +12,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Account from './components/Account';
 import Estimate from './components/Estimate';
-import Dashboard from './components/Dashboard';  // Ensure Dashboard is imported
+import Dashboard from './components/Dashboard';  
 
 function App() {
   // States
@@ -49,6 +50,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </Router>
+      <footer className='Footer'>Rounding Third LLC | 2025</footer>
     </div>
   );
 }
