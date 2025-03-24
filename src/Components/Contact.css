@@ -1,11 +1,144 @@
-*/*
+/*
     -------------------
     --- Contact Page --
     -------------------
 */
 
-/* --- --- */
-
-/* --- --- */
-
-/* --- --- */
+/* General Container Styles */
+    .contact-container {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+    
+    .contact-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    
+    .contact-header h1 {
+        font-size: 36px;
+        color: #2c3e50;
+    }
+    
+    .contact-header p {
+        font-size: 18px;
+        color: #7f8c8d;
+        margin-top: 10px;
+    }
+  
+/* Contact Form Section */
+    .contact-form {
+        background-color: #ffffff;
+        padding: 20px;
+        margin-bottom: 40px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .contact-form h2 {
+        font-size: 28px;
+        color: #2c3e50;
+        margin-bottom: 20px;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        font-size: 16px;
+        color: #34495e;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #bdc3c7;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #5b7359;
+    }
+    
+    textarea {
+        resize: vertical;
+    }
+  
+/* Submit Button */
+    .submit-button {
+        background-color: rgb(0, 0, 102);
+        color: #fff;
+        font-size: 16px;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 20px;
+    }
+    
+    .submit-button:hover {
+        background-color: rgb(0, 0, 161);
+    }
+  
+/* Contact Details Section */
+    .contact-details {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .contact-details h2 {
+        font-size: 28px;
+        color: #2c3e50;
+        margin-bottom: 20px;
+    }
+    
+    .contact-details p {
+        font-size: 16px;
+        color: #34495e;
+        margin-bottom: 10px;
+    }
+    
+    .contact-details p:last-child {
+        margin-bottom: 0;
+    }
+  
+/* Responsive Design */
+    @media (max-width: 768px) {
+        .contact-container {
+        padding: 15px;
+        }
+    
+        .contact-form,
+        .contact-details {
+        padding: 15px;
+        }
+    
+        .contact-form h2,
+        .contact-details h2 {
+        font-size: 24px;
+        }
+    
+        .form-group input,
+        .form-group textarea {
+        font-size: 14px;
+        }
+    
+        .submit-button {
+        font-size: 14px;
+        }
+    }
+    
