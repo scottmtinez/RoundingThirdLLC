@@ -4,5 +4,154 @@
     -------------------
 */
 
-/* Home Page Container */
 
+/* General Container Styles */
+    .home-container {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+
+/* Hero Section */
+    .hero {
+        background-color: #5b7359;
+        color: #fff;
+        padding: 80px 20px;
+        text-align: center;
+        background-image: url('https://d2uhsaoc6ysewq.cloudfront.net/59341/Landscape-Trucks-Isuzu-NPR-HD-48518795.jpg'); 
+        background-position: center;
+    }
+
+    .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        margin-bottom: 15px;
+    }
+
+    .hero p {
+        font-size: 18px;
+        font-weight: 300;
+        margin-bottom: 25px;
+    }
+
+    .cta-button {
+        display: inline-block;
+        background-color: #5b7359;
+        color: #fff;
+        font-size: 18px;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .cta-button:hover {
+        background-color: #4a5d47;
+    }
+
+/* Services Overview Section */
+    .services-overview {
+        padding: 40px 20px;
+        background-color: #fff;
+        text-align: center;
+    }
+
+    .services-overview h2 {
+        font-size: 36px;
+        color: #2c3e50;
+        margin-bottom: 40px;
+    }
+
+    .services-list {
+        display: flex;
+        justify-content: space-around;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .service-item {
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        padding: 30px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        flex: 1;
+        max-width: 300px;
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .service-item h3 {
+        font-size: 24px;
+        color: #2c3e50;
+        margin-bottom: 15px;
+    }
+
+    .service-item p {
+        font-size: 16px;
+        color: #34495e;
+        line-height: 1.6;
+    }
+
+/* Call to Action Section */
+    .cta-section {
+        background-color: rgba(0, 0, 133, 0.288);;
+        text-align: center;
+        padding: 50px 20px;
+        margin-top: 40px;
+    }
+
+    .cta-section h2 {
+        font-size: 32px;
+        color: #2c3e50;
+        margin-bottom: 20px;
+    }
+
+    .cta-section p {
+        font-size: 18px;
+        margin-bottom: 25px;
+        color: #34495e;
+    }
+
+/* Responsive Design */
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 36px;
+        }
+
+        .hero p {
+            font-size: 16px;
+        }
+
+        .services-overview h2 {
+            font-size: 28px;
+        }
+
+        .service-item h3 {
+            font-size: 20px;
+        }
+
+        .service-item p {
+            font-size: 14px;
+        }
+
+        .cta-section h2 {
+            font-size: 28px;
+        }
+
+        .cta-button {
+            font-size: 16px;
+            padding: 10px 25px;
+        }
+    }
