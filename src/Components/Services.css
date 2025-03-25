@@ -4,9 +4,131 @@
     -------------------
 */
 
-/* --- --- */
-
-/* --- --- */
-
-/* --- --- */
-
+/* General Container Styles */
+    .services-container {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 30px;
+        background-color: #f9f9f9;
+        color: #333;
+    }
+  
+/* Header Section */
+    .services-header {
+        text-align: center;
+        background-color: #57776a;
+        color: #fff;
+        padding: 50px 20px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+    }
+    
+    .services-header h1 {
+        font-size: 48px;
+        margin-bottom: 15px;
+    }
+    
+    .services-header p {
+        font-size: 18px;
+        font-weight: 300;
+    }
+  
+/* Services List Section */
+    .services-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+    
+    .service-card {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .service-card h2 {
+        font-size: 24px;
+        color: #2c3e50;
+        margin-bottom: 15px;
+    }
+    
+    .service-card p {
+        font-size: 16px;
+        color: #34495e;
+        line-height: 1.6;
+    }
+  
+/* Call to Action Section */
+    .services-cta {
+        text-align: center;
+        background-color: rgba(0, 0, 133, 0.288);
+        padding: 30px 20px;
+        border-radius: 8px;
+        margin-top: 40px;
+    }
+    
+    .services-cta h2 {
+        font-size: 32px;
+        color: #2c3e50;
+        margin-bottom: 20px;
+    }
+    
+    .services-cta p {
+        font-size: 18px;
+        margin-bottom: 25px;
+        color: #34495e;
+    }
+    
+    .cta-button {
+        display: inline-block;
+        background-color: #5b7359;
+        color: #fff;
+        font-size: 18px;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+    
+    .cta-button:hover {
+        background-color: #4a5d47;
+    }
+    
+/* Responsive Design */
+    @media (max-width: 768px) {
+        .services-header h1 {
+        font-size: 36px;
+        }
+    
+        .services-header p {
+        font-size: 16px;
+        }
+    
+        .service-card h2 {
+        font-size: 20px;
+        }
+    
+        .service-card p {
+        font-size: 14px;
+        }
+    
+        .services-cta h2 {
+        font-size: 28px;
+        }
+    
+        .cta-button {
+        font-size: 16px;
+        padding: 10px 25px;
+        }
+    }
+    
