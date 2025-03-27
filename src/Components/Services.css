@@ -70,7 +70,7 @@
 /* Call to Action Section */
     .services-cta {
         text-align: center;
-        background-color: rgba(0, 0, 133, 0.288);
+        background-color: tan;
         padding: 30px 20px;
         border-radius: 8px;
         margin-top: 40px;
@@ -78,14 +78,15 @@
     
     .services-cta h2 {
         font-size: 32px;
-        color: #2c3e50;
         margin-bottom: 20px;
+        color: #333333;
+        font-weight: bold;
     }
     
     .services-cta p {
         font-size: 18px;
         margin-bottom: 25px;
-        color: #34495e;
+        color: #333333;
     }
     
     .cta-button {
