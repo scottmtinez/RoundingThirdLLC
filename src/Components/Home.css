@@ -9,7 +9,7 @@
     .home-container {
         font-family: Arial, sans-serif;
         margin: 0;
-        padding: 0;
+        padding: 30px;
         background-color: #f4f4f4;
         color: #333;
     }
@@ -22,6 +22,7 @@
         text-align: center;
         background-image: url('https://d2uhsaoc6ysewq.cloudfront.net/59341/Landscape-Trucks-Isuzu-NPR-HD-48518795.jpg'); 
         background-position: center;
+        border-radius: 8px;
     }
 
     .hero-content {
@@ -59,7 +60,6 @@
 /* Services Overview Section */
     .services-overview {
         padding: 40px 20px;
-        background-color: #fff;
         text-align: center;
     }
 
@@ -106,22 +106,26 @@
 
 /* Call to Action Section */
     .cta-section {
-        background-color: rgba(0, 0, 133, 0.288);;
+        background-color: tan;
         text-align: center;
         padding: 50px 20px;
         margin-top: 40px;
+        border-radius: 8px;
     }
 
     .cta-section h2 {
         font-size: 32px;
-        color: #2c3e50;
+        color: #333333;
+        font-weight: bold;
         margin-bottom: 20px;
+        padding: 30px 20px;
+        border-radius: 8px;
     }
 
     .cta-section p {
         font-size: 18px;
         margin-bottom: 25px;
-        color: #34495e;
+        color: #333333;
     }
 
 /* Responsive Design */
@@ -155,7 +159,3 @@
             padding: 10px 25px;
         }
     }
-
-/* ---- --- */
-
-/* --- --- */
