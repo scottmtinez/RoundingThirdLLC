@@ -78,7 +78,7 @@
   /* Call to Action Section */
   .about-cta {
     text-align: center;
-    background-color: rgba(0, 0, 133, 0.288);
+    background-color: tan;
     padding: 30px 20px;
     border-radius: 8px;
     margin-top: 40px;
@@ -86,14 +86,15 @@
   
   .about-cta h2 {
     font-size: 32px;
-    color: #2c3e50;
+    color: #333333;
     margin-bottom: 20px;
+    font-weight: bolder;
   }
   
   .about-cta p {
     font-size: 18px;
     margin-bottom: 25px;
-    color: #34495e;
+    color: #333333;
   }
   
   .cta-button {
