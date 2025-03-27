@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  padding:30px;
+  background-color: whitesmoke;
 }
 
 .App-logo {
@@ -54,4 +56,5 @@
     font-family: Arial, sans-serif;
     font-weight: 400;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    border-radius: 10px;
   }
