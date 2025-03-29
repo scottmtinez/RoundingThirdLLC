@@ -1,154 +1,149 @@
 /*
-    ---------------------
-    --- Account Page --
-    ---------------------
+    -------------------
+    --- About Page ----
+    -------------------
 */
 
-/* --- Login Box --- */
-    .Account-h1 {
+/* General Container Styles */
+    .about-container {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 30px;
+        background-color: transparent;
+        color: #333;
+    }
+    
+    /* Header Section */
+    .about-header {
         text-align: center;
+        background-color: #57776a;
+        color: #fff;
+        padding: 50px 20px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .about-header h1 {
         font-size: 48px;
-        margin-top: 35px;
         margin-bottom: 15px;
     }
-
-    .Account-login-form {
-        width: 50%;
-        height: 400px; 
-        margin: 0 auto;
-        padding: 30px;
-        border-radius: 10px;
-        border: 2px solid #ddd;
-        background-color: white; 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-top: 25px;
+    
+    .about-header p {
+        font-size: 18px;
+        font-weight: 300;
     }
 
-    .Account-input {
-        width: 100%;
-        padding: 12px;
-        font-size: 16px;
-        margin-bottom: 20px;
-        border-radius: 5px;
-        border: 2px solid #ddd;
-        transition: border-color 0.3s;
-    }
+  /* About Us Content Section */
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 20px;
+  }
+  
+  .about-text {
+    text-align: center;
+    max-width: 800px;
+  }
+  
+  .about-text h2 {
+    font-size: 32px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+  }
 
-    .Account-input:focus {
-        border-color: #57776a; 
-        outline: none;
+  .about-content h2{
+    font-weight: bolder;
+  }
+  
+  .about-text p {
+    font-size: 16px;
+    color: #34495e;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .about-text ul {
+    list-style-type: none;
+    padding: 0;
+    font-size: 16px;
+    color: #34495e;
+  }
+  
+  .about-text li {
+    margin-bottom: 10px;
+  }
+  
+  .about-text li::before {
+    margin-right: 10px;
+  }
+  
+  /* Call to Action Section */
+  .about-cta {
+    text-align: center;
+    background-color: tan;
+    padding: 30px 20px;
+    border-radius: 8px;
+    margin-top: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .about-cta h2 {
+    font-size: 32px;
+    color: #333333;
+    margin-bottom: 20px;
+    font-weight: bolder;
+  }
+  
+  .about-cta p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    color: #333333;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    background-color: rgb(0, 0, 102);
+    color: #fff;
+    font-size: 18px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
+  .cta-button:hover {
+    background-color: rgb(0, 0, 161);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .about-content {
+      padding: 15px;
     }
-
-    .Account-button {
-        width: 100%;
-        padding: 12px;
-        font-size: 16px;
-        background-color: #57776a; 
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
+  
+    .about-header h1 {
+      font-size: 36px;
     }
-
-    .Account-button:hover {
-        background-color: #4a5d47; 
+  
+    .about-header p {
+      font-size: 16px;
     }
-
-/* --- Signup Box --- */
-    .Account-h2 {
-        text-align: center;
-        font-size: 32px;
-        margin-top: 35px;
-        margin-bottom: 15px;
+  
+    .about-text h2 {
+      font-size: 28px;
     }
-
-    .Account-signup-form {
-        width: 50%;
-        height: 400px; 
-        margin: 0 auto;
-        padding: 30px;
-        border-radius: 10px;
-        border: 2px solid #ddd;
-        background-color: white; 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-top: 25px;
+  
+    .about-cta h2 {
+      font-size: 28px;
     }
-
-    .Account-input {
-        width: 100%;
-        padding: 12px;
-        font-size: 16px;
-        margin-bottom: 20px;
-        border-radius: 5px;
-        border: 2px solid #ddd;
-        transition: border-color 0.3s;
+  
+    .cta-button {
+      font-size: 16px;
+      padding: 10px 25px;
     }
-
-    .Account-input:focus {
-        border-color: #57776a; 
-        outline: none;
-    }
-
-    .Account-button {
-        width: 100%;
-        padding: 12px;
-        font-size: 16px;
-        background-color: #57776a; 
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-    .Account-button:hover {
-        background-color: #4a5d47; 
-    }
-
-/* --- Icon Logo --*/
-    .bi.bi-person-vcard-fill{
-        font-size: 75px;
-        color: #5b7359;
-        font-family: 'Antonia', serif;
-    }
-
-/* --- Switch Form ---*/
-    .switch-form {
-        text-align: center;
-        margin-top: 20px;
-    }  
-
-    .switch-form-link {
-        color: rgb(0, 0, 102);
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    .switch-form-link:hover {
-        color: rgb(0, 0, 161);
-    }
-
-/* --- Logged In --- */
-    .Account-button-logout {
-        width: 25%;
-        padding: 12px;
-        font-size: 16px;
-        background-color: rgb(0, 0, 102);
-        color: white;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        float: right;
-        border-bottom-left-radius: 5px;
-    }
-
-    .Account-button-logout:hover {
-        background-color: rgb(0, 0, 161);
-    }
+  }
+  
