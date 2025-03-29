@@ -9,18 +9,20 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 20px;
-        background-color: #f4f4f4;
+        background-color: transparent;
         color: #333;
     }
     
     .contact-header {
         text-align: center;
         margin-bottom: 40px;
+        font-weight: bolder;
     }
     
     .contact-header h1 {
         font-size: 36px;
         color: #2c3e50;
+        font-weight: bold;
     }
     
     .contact-header p {
@@ -97,7 +99,7 @@
         background-color: tan;
         padding: 20px;
         border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
     
     .contact-details h2 {
