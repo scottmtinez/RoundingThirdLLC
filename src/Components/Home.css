@@ -10,7 +10,7 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 30px;
-        background-color: #f4f4f4;
+        background-color: transparent;
         color: #333;
     }
 
@@ -23,6 +23,7 @@
         background-image: url('https://d2uhsaoc6ysewq.cloudfront.net/59341/Landscape-Trucks-Isuzu-NPR-HD-48518795.jpg'); 
         background-position: center;
         border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     .hero-content {
@@ -111,6 +112,7 @@
         padding: 50px 20px;
         margin-top: 40px;
         border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     .cta-section h2 {
