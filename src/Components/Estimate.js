@@ -37,13 +37,13 @@ function Estimate() {
             let cost = basePrices[homeSize];
 
             // Add additional services cost
-            Object.keys(services).forEach(service => {
-                if (services[service]) {
-                    cost += servicePrices[service];
-                }
-            });
+                Object.keys(services).forEach(service => {
+                    if (services[service]) {
+                        cost += servicePrices[service];
+                    }
+                });
 
-            setEstimatedCost(cost);
+                setEstimatedCost(cost);
         };
 
     return (
@@ -52,7 +52,7 @@ function Estimate() {
 
             <div className="Estimate-form">
                 {/* Pickup & Drop-off Locations */}
-                <label>Pickup Location:</label>
+                <label className='Estimate-label'>Pickup Location:</label>
                 <input
                     type="text"
                     value={pickupLocation}
@@ -60,7 +60,7 @@ function Estimate() {
                     placeholder="Enter pickup address..."
                 />
 
-                <label>Drop-off Location:</label>
+                <label className='Estimate-label'>Drop-off Location:</label>
                 <input
                     type="text"
                     value={dropoffLocation}
@@ -69,7 +69,7 @@ function Estimate() {
                 />
 
                 {/* Home Size Selection */}
-                <label>Home Size:</label>
+                <label className='Estimate-label'>Home Size:</label>
                 <select value={homeSize} onChange={(e) => setHomeSize(e.target.value)}>
                     <option value="">Select Home Size</option>
                     <option value="studio">Studio</option>
