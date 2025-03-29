@@ -14,22 +14,22 @@ function Contact() {
         <h2>Get in Touch</h2>
         <form>
           <div className="form-group">
-            <label>Name</label>
+            <label className='contact-form-label'>Name</label>
             <input type="text" placeholder="Enter your name" required />
           </div>
 
           <div className="form-group">
-            <label>Email</label>
+            <label className='contact-form-label'>Email</label>
             <input type="email" placeholder="Enter your email" required />
           </div>
 
           <div className="form-group">
-            <label>Phone</label>
+            <label className='contact-form-label'>Phone</label>
             <input type="tel" placeholder="Enter your phone number" required />
           </div>
 
           <div className="form-group">
-            <label>Message</label>
+            <label className='contact-form-label'>Message</label>
             <textarea placeholder="How can we help you?" rows="4" required></textarea>
           </div>
 
@@ -40,7 +40,6 @@ function Contact() {
       {/* Contact Details */}
       <section className="contact-details">
         <h2>Our Contact Information</h2>
-        <p>📍 Address: 123 Moving St, City, State, ZIP</p>
         <p>📞 Phone: (123) 456-7890</p>
         <p>✉️ Email: support@movingcompany.com</p>
         <p>🕒 Hours: Mon - Fri, 8:00 AM - 6:00 PM</p>
