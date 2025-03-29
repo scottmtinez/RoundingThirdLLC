@@ -1,84 +1,76 @@
 /*
     -------------------
-    --- Contact Page --
+    -- Estimate Page --
     -------------------
 */
 
 /* General Container Styles */
-    .contact-container {
+    .Estimate-container {
         font-family: Arial, sans-serif;
         margin: 0;
-        padding: 20px;
+        padding: 30px;
         background-color: transparent;
         color: #333;
     }
     
-    .contact-header {
+    .Estimate-h1 {
         text-align: center;
-        margin-bottom: 40px;
-        font-weight: bolder;
-    }
-    
-    .contact-header h1 {
         font-size: 36px;
         color: #2c3e50;
-        font-weight: bold;
-    }
-    
-    .contact-header p {
-        font-size: 18px;
-        color: #7f8c8d;
-        margin-top: 10px;
+        margin-bottom: 30px;
+        font-weight: bolder;
     }
   
-/* Contact Form Section */
-    .contact-form {
+/* Form Styling */
+    .Estimate-form {
         background-color: #ffffff;
         padding: 20px;
-        margin-bottom: 40px;
+        margin: 0 auto;
         border-radius: 8px;
+        width: 50%;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
     
-    .contact-form h2 {
-        font-size: 28px;
-        color: #2c3e50;
-        margin-bottom: 20px;
-    }
-    
-    .form-group {
-        margin-bottom: 20px;
-    }
-    
-    .form-group label {
+    .Estimate-form label {
         font-size: 16px;
         color: #34495e;
         margin-bottom: 5px;
         display: block;
     }
     
-    .form-group input,
-    .form-group textarea {
+    .Estimate-form input,
+    .Estimate-form select {
         width: 100%;
         padding: 10px;
         font-size: 16px;
         border: 1px solid #bdc3c7;
         border-radius: 5px;
         box-sizing: border-box;
+        margin-bottom: 15px;
     }
     
-    .form-group input:focus,
-    .form-group textarea:focus {
+    .Estimate-form input:focus,
+    .Estimate-form select:focus {
         outline: none;
         border-color: #5b7359;
     }
     
-    textarea {
-        resize: vertical;
+    .Estimate-services {
+        margin-bottom: 20px;
     }
-  
-/* Submit Button */
-    .submit-button {
+    
+    .Estimate-services label {
+        display: block;
+        font-size: 14px;
+        color: #34495e;
+        margin-bottom: 10px;
+    }
+    
+    .Estimate-services input {
+        margin-right: 10px;
+    }
+    
+    .Estimate-button {
         background-color: rgb(0, 0, 102);
         color: #fff;
         font-size: 16px;
@@ -87,60 +79,48 @@
         border-radius: 5px;
         cursor: pointer;
         width: 100%;
-        margin-top: 20px;
     }
     
-    .submit-button:hover {
+    .Estimate-button:hover {
         background-color: rgb(0, 0, 161);
     }
   
-/* Contact Details Section */
-    .contact-details {
-        background-color: tan;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+/* Estimated Cost Display */
+    .Estimate-result {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #d9f7be;
+        border-radius: 5px;
+        text-align: center;
     }
     
-    .contact-details h2 {
-        font-size: 28px;
-        color: #333333;
-        font-weight: bolder;
-        margin-bottom: 20px;
-    }
-    
-    .contact-details p {
-        font-size: 16px;
-        color: #333333;
-        margin-bottom: 10px;
-    }
-    
-    .contact-details p:last-child {
-        margin-bottom: 0;
+    .Estimate-result h2 {
+        font-size: 24px;
+        color: #2c3e50;
+        margin: 0;
     }
   
 /* Responsive Design */
     @media (max-width: 768px) {
-        .contact-container {
+        .Estimate-form {
+        width: 100%;
         padding: 15px;
         }
     
-        .contact-form,
-        .contact-details {
-        padding: 15px;
+        .Estimate-h1 {
+        font-size: 28px;
         }
     
-        .contact-form h2,
-        .contact-details h2 {
-        font-size: 24px;
-        }
-    
-        .form-group input,
-        .form-group textarea {
+        .Estimate-form label {
         font-size: 14px;
         }
     
-        .submit-button {
+        .Estimate-form input,
+        .Estimate-form select {
+        font-size: 14px;
+        }
+    
+        .Estimate-button {
         font-size: 14px;
         }
     }
