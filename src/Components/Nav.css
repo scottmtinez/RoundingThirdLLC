@@ -62,3 +62,59 @@
   font-family: 'Antonia', serif;
 }
 
+/* Mobile Styles */
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block; 
+      background-color: transparent;
+      border: 1px solid white;
+      border-radius: 3px;
+      color: white;
+    }
+
+    .menu-toggle:hover {
+      color: navy;
+      cursor: pointer;
+      border: navy 1px solid;
+    }
+
+    .menu-toggle:active {
+      transform: scale(1.2); /* Increases size by 20% */
+    }
+
+    .nav-links {
+      display: none; 
+      flex-direction: column;
+      position: absolute;
+      top: 215px;
+      right: 30px;
+      background: #57776a;
+      width: 200px;
+      border-radius: 5px;
+      padding: 10px 0;
+    }
+
+    .nav-links.open {
+      display: flex;
+    }
+
+    .nav-links li {
+      padding: 10px;
+      text-align: center;
+    }
+  }
+
+/* Desktop View (Ensuring Menu Button is Hidden) */
+  @media (min-width: 769px) {
+    .menu-toggle {
+      display: none !important; /* Hide menu button on larger screens */
+    }
+
+    .nav-links {
+      display: flex !important; /* Always show nav links normally */
+      flex-direction: row;
+      position: static;
+      background: none;
+      width: auto;
+    }
+  }
