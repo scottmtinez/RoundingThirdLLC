@@ -4,7 +4,6 @@
     -------------------
 */
 
-
 /* General Container Styles */
     .home-container {
         font-family: Arial, sans-serif;
@@ -25,7 +24,7 @@
         border-radius: 8px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
-
+ 
     .hero-content {
         max-width: 800px;
         margin: 0 auto;
@@ -62,6 +61,7 @@
     .services-overview {
         padding: 40px 20px;
         text-align: center;
+        margin: 0 auto;
     }
 
     .services-overview h2 {
@@ -72,9 +72,10 @@
 
     .services-list {
         display: flex;
-        justify-content: space-around;
-        gap: 20px;
-        flex-wrap: wrap;
+        justify-content: center; 
+        align-items: center; 
+        gap: 20px; 
+        flex-wrap: wrap; 
     }
 
     .service-item {
@@ -159,5 +160,12 @@
         .cta-button {
             font-size: 16px;
             padding: 10px 25px;
+        }
+    }
+
+/* --- Mobile Styles --- */
+    @media (max-width: 768px) {
+        .hero{
+            color: #2c3e50;
         }
     }
