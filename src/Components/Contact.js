@@ -1,6 +1,8 @@
 import './Contact.css';
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { db } from './FirebaseConfig';
+import { collection, addDoc } from 'firebase/firestore';
 
 function Contact() {
   // States
@@ -8,17 +10,31 @@ function Contact() {
     const [notification, setNotification] = useState({ message: '', type: '' });
 
   // EmailJS configuration
-    const sendEmail = (e) => {
+    const sendEmail = async (e) => {
       e.preventDefault();
 
-      emailjs.sendForm('HIDDEN', 'HIDDEN', form.current, 'HIDDEN')
-        .then((result) => {
-            console.log('Email successfully sent!', result.text);
-            setNotification({ message: 'Message sent successfully!', type: 'success' });
-        }, (error) => {
-            console.log('Failed to send email.', error.text);
-            setNotification({ message: 'Failed to send message. Please try again later.', type: 'error' });
-        });
+      const formData = {
+        name: form.current.name.value,
+        email: form.current.email.value,
+        phone: form.current.phone.value,
+        message: form.current.message.value,
+        timestamp: new Date(),
+      };
+
+      try {
+        // Send email using EmailJS
+          await emailjs.sendForm('HIDDEN', 'HIDDEN', form.current, 'HIDDEN');
+
+        // Store form data in Firestore
+          await addDoc(collection(db, 'ContactPage'), formData);
+
+        // Set notification message
+          console.log('Email sent successfully!');
+          setNotification({ message: 'Message sent successfully!', type: 'success' });
+      } catch (error) {
+        console.error('Error:', error);
+        setNotification({ message: 'Failed to send message. Please try again later.', type: 'error' });
+      }
 
       e.target.reset();
     };
