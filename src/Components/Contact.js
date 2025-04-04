@@ -1,6 +1,6 @@
 import './Contact.css';
 import React, { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
+import emailjs from 'emailjs-com';
 import { db } from './FirebaseConfig';
 import { collection, addDoc } from 'firebase/firestore';
 
@@ -10,33 +10,24 @@ function Contact() {
     const [notification, setNotification] = useState({ message: '', type: '' });
 
   // EmailJS configuration
-    const sendEmail = async (e) => {
+    const sendEmail = (e) => {
       e.preventDefault();
 
-      const formData = {
-        name: form.current.name.value,
-        email: form.current.email.value,
-        phone: form.current.phone.value,
-        message: form.current.message.value,
-        timestamp: new Date(),
-      };
-
-      try {
-        // Send email using EmailJS
-          await emailjs.sendForm('HIDDEN', 'HIDDEN', form.current, 'HIDDEN');
-
-        // Store form data in Firestore
-          await addDoc(collection(db, 'ContactPage'), formData);
-
-        // Set notification message
-          console.log('Email sent successfully!');
-          setNotification({ message: 'Message sent successfully!', type: 'success' });
-      } catch (error) {
-        console.error('Error:', error);
-        setNotification({ message: 'Failed to send message. Please try again later.', type: 'error' });
-      }
-
-      e.target.reset();
+      emailjs.sendForm('HIDDEN', 'HIDDEN', form.current, 'HIDDEN')
+        .then((result) => {
+            console.log(result.text);
+            setNotification({ message: 'Message sent successfully!', type: 'success' });
+            setTimeout(() => {
+              setNotification({ message: '', type: '' });
+              window.location.reload(); // Refresh the page after 3 seconds
+            }, 3000); // Remove notification after 3 seconds
+        }, (error) => {
+            console.log(error.text);
+            setNotification({ message: 'An error occurred, please try again.', type: 'error' });
+            setTimeout(() => {
+              setNotification({ message: '', type: '' });
+            }, 3000); // Remove notification after 3 seconds
+        });
     };
 
   return (
@@ -84,7 +75,7 @@ function Contact() {
       <section className="contact-details">
         <h2>Our Contact Information</h2>
         <p>📞 Phone(s): (262) 354-4842 and (262) 951-6711</p>
-        <p>✉️ Email: support@movingcompany.com</p>
+        <p>✉️ Email: Contact@roundingthirdllc.net</p>
         <p>🕒 Hours: Mon - Fri, 8:00 AM - 6:00 PM</p>
       </section>
     </div>
