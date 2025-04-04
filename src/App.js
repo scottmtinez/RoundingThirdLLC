@@ -11,8 +11,7 @@ import './App.css';
   import About from './components/About';
   import Contact from './components/Contact';
   import Account from './components/Account';
-  import Estimate from './components/Estimate';
-  import Dashboard from './components/Dashboard';  
+  import Estimate from './components/Estimate'; 
 
 function App() {
   // States
@@ -48,7 +47,6 @@ function App() {
           <Route path="/estimate" element={<Estimate />} />
           <Route path="/account" element={<Account />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </Router>
       <footer className='Footer'>© 2025 Rounding Third LLC All rights reserved.</footer>
