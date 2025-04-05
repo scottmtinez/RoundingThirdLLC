@@ -1,0 +1,96 @@
+/*
+    -------------------
+    ---- Sign Up Page -
+    -------------------
+*/
+
+/* --- Signup Box --- */
+    .Signup-auth-container{
+        margin-top: 50%;
+    }
+
+    .Signup-h1 {
+        text-align: center;
+        font-size: 48px;
+        margin-top: 35px;
+        margin-bottom: 15px;
+        background-color: transparent;
+    }
+
+    .Signup-h2 {
+        width: 25%;
+        height: auto;
+        margin-left: 41%;
+    }
+
+    .bi.bi-person-vcard-fill{
+        background-color: transparent;
+        color: #57776a; 
+        font-size: 50px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .Signup-form {
+        width: 50%;
+        height: 400px; 
+        margin: 0 auto;
+        padding: 30px;
+        border-radius: 10px;
+        border: 2px solid #ddd;
+        background-color: white; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 25px;
+    }
+
+    .Signup-input {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 2px solid #ddd;
+        transition: border-color 0.3s;
+    }
+
+    .Signup-input:focus {
+        border-color: #57776a; 
+        outline: none;
+    }
+
+    .Signup-button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        background-color: #57776a; 
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .Signup-button:hover {
+        background-color: #4a5d47; 
+    }
+
+/* --- Switch Form ---*/
+    .Signup-switch-form {
+        text-align: center;
+        margin-top: 20px;
+        background-color: transparent;
+    }  
+
+    .Signup-switch-form-link {
+        color: rgb(0, 0, 102);
+        text-decoration: none;
+        font-weight: bold;
+        background-color: transparent;
+    }
+
+    .Signup-switch-form-link:hover {
+        color: rgb(0, 0, 161);
+    }
