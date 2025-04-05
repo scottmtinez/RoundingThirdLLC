@@ -31,7 +31,7 @@ function Dashboard() {
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
-            };
+            }; /* &':&_&: */
 
             fetchAccountRequests(); 
         }, [setAccountRequests]); 
