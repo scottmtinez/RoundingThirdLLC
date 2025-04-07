@@ -105,7 +105,9 @@ function Dashboard() {
     // Get contact page messages
 
     return (
-        <div className="Dashboard-container">
+        <div>
+            <div className="Dashboard-container">
+
             {/* Header Section */}
             <div className="Dashboard-section">
                 <h1 className="Dashboard-h1">
@@ -155,19 +157,21 @@ function Dashboard() {
             <div className="Dashboard-section">
                 <h2>Account Admins</h2>
                 {admins.length > 0 ? (
-                    <ul>
-                        {admins.map(admin => (
-                            <li key={admin.id}>
-                                {/* Clickable Name to Open Popup */}
-                                <p 
-                                    className="admin-link" 
-                                    onClick={() => setSelectedAdmin(admin)}
-                                >
-                                    {admin.Name}
-                                </p>
-                            </li>
-                        ))}
-                    </ul>
+                    <div className="admin-list-container">
+                        <ul className="admin-list">
+                            {admins.map(admin => (
+                                <li key={admin.id}>
+                                    {/* Clickable Name to Open Popup */}
+                                    <p 
+                                        className="admin-link" 
+                                        onClick={() => setSelectedAdmin(admin)}
+                                    >
+                                        {admin.Name}
+                                    </p>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 ) : (
                     <p>No admins found.</p>
                 )}
@@ -176,13 +180,22 @@ function Dashboard() {
             {/* Contact Page Messages Section */}
             <div className="Dashboard-section">
                 <h2>Messages</h2>
-
+                <p>Coming Soon...</p>
             </div>
 
             {/* N/A */}
             <div className="Dashboard-section">
                 <h2></h2>
             </div>
+        </div>
+            {/* Tracking Spreadsheet */}
+            <div className="Dashboard-section">
+                <h2>Tracking Sheet</h2>
+                <p>Coming Soon...</p>
+            </div>
+
+            {/* Footer Section */}
+            <footer className="Dashboard-footer">Need something fixed? <a href>Click here</a></footer>
         </div>
     );
 }
