@@ -14,6 +14,7 @@ function Dashboard() {
         const [accountRequests, setAccountRequests] = useState([]);
         const [admins, setAdmins] = useState([]);
         const [selectedAdmin, setSelectedAdmin] = useState(null);
+        const [showPopup, setShowPopup] = useState(false);
 
     // Fetch contact page Messages
 
@@ -195,7 +196,28 @@ function Dashboard() {
             </div>
 
             {/* Footer Section */}
-            <footer className="Dashboard-footer">Need something fixed? <a href>Click here</a></footer>
+            <footer className="Dashboard-footer">
+                Need something fixed?
+                <a href="#" className='Dashboard-footer-link' onClick={(e) => { e.preventDefault(); setShowPopup(true); }}>
+                     Click here
+                </a>
+            </footer>
+
+            {/* Contact Popup */}
+            {showPopup && (
+                <div className="popup-overlay" onClick={() => setShowPopup(false)}>
+                    <div className="popup-box" onClick={(e) => e.stopPropagation()}>
+                        <span className="close-btn" onClick={() => setShowPopup(false)}>X</span>
+                        <h2 className="Dashboard-footer-contact-h2">Contact Us</h2>
+                        <form className="Dashboard-footer-contact-form" onSubmit={(e) => { e.preventDefault(); alert('Message sent!'); setShowPopup(false); }}>
+                            <input className="Dashboard-footer-contact-input" type="text" placeholder="Enter your name" required />
+                            <input className="Dashboard-footer-contact-input" type="email" placeholder="Enter your email" required />
+                            <textarea className="Dashboard-footer-contact-input" placeholder="How can we help you?" rows="4" required></textarea>
+                            <button className="Dashboard-footer-contact-btn" type="submit">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
