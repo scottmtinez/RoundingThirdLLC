@@ -121,10 +121,10 @@ function Dashboard() {
             e.preventDefault();
     
             emailjs.send(
-                "service_hg0jpwf",     
-                "template_z00wdye",    
+                "HIIDDEN",     
+                "HIDDEN",    
                 formData,
-                "Cdu-w74-z5WdXHRRi"   
+                "HIDDEN"   
             ).then(() => {
                 alert("Message sent successfully!");
                 setShowPopup(false);
