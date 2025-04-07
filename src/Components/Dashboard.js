@@ -5,6 +5,7 @@ import { onAuthStateChanged, signOut, createUserWithEmailAndPassword } from "fir
 import { collection, getDocs, deleteDoc, updateDoc, doc, setDoc } from "firebase/firestore";
 import "./Dashboard.css";
 import logo from '../images/Logo.png';
+import emailjs from "@emailjs/browser";
 
 function Dashboard() {
     // States
@@ -15,9 +16,11 @@ function Dashboard() {
         const [admins, setAdmins] = useState([]);
         const [selectedAdmin, setSelectedAdmin] = useState(null);
         const [showPopup, setShowPopup] = useState(false);
-
-    // Fetch contact page Messages
-
+        const [formData, setFormData] = useState({
+            name: "",
+            email: "",
+            message: ""
+        });
 
     // Fetch account requests from Firebase Firestore
         useEffect(() => {
@@ -103,7 +106,34 @@ function Dashboard() {
             fetchAdmins();
         }, []);
 
-    // Get contact page messages
+    // Fetch contact page messages
+
+    
+
+
+
+    // Footer/Contact Form Popup - Send Message
+        const handleChange = (e) => {
+            setFormData({ ...formData, [e.target.name]: e.target.value });
+        };
+
+        const sendEmail = (e) => {
+            e.preventDefault();
+    
+            emailjs.send(
+                "service_hg0jpwf",     
+                "template_z00wdye",    
+                formData,
+                "Cdu-w74-z5WdXHRRi"   
+            ).then(() => {
+                alert("Message sent successfully!");
+                setShowPopup(false);
+                setFormData({ name: "", email: "", message: "" }); 
+            }).catch((error) => {
+                alert("Failed to send message. Try again later.");
+                console.error("EmailJS Error:", error);
+            });
+        };
 
     return (
         <div>
@@ -209,11 +239,37 @@ function Dashboard() {
                     <div className="popup-box" onClick={(e) => e.stopPropagation()}>
                         <span className="close-btn" onClick={() => setShowPopup(false)}>X</span>
                         <h2 className="Dashboard-footer-contact-h2">Contact Us</h2>
-                        <form className="Dashboard-footer-contact-form" onSubmit={(e) => { e.preventDefault(); alert('Message sent!'); setShowPopup(false); }}>
-                            <input className="Dashboard-footer-contact-input" type="text" placeholder="Enter your name" required />
-                            <input className="Dashboard-footer-contact-input" type="email" placeholder="Enter your email" required />
-                            <textarea className="Dashboard-footer-contact-input" placeholder="How can we help you?" rows="4" required></textarea>
-                            <button className="Dashboard-footer-contact-btn" type="submit">Send Message</button>
+                        <form className="Dashboard-footer-contact-form" onSubmit={sendEmail}>
+                            <input 
+                                className="Dashboard-footer-contact-input" 
+                                type="text" 
+                                name="name"
+                                placeholder="Enter your name" 
+                                value={formData.name} 
+                                onChange={handleChange} 
+                                required 
+                            />
+                            <input 
+                                className="Dashboard-footer-contact-input" 
+                                type="email" 
+                                name="email"
+                                placeholder="Enter your email" 
+                                value={formData.email} 
+                                onChange={handleChange} 
+                                required 
+                            />
+                            <textarea 
+                                className="Dashboard-footer-contact-input" 
+                                name="message"
+                                placeholder="How can we help you?" 
+                                rows="4" 
+                                value={formData.message} 
+                                onChange={handleChange} 
+                                required
+                            />
+                            <button className="Dashboard-footer-contact-btn" type="submit">
+                                Send Message
+                            </button>
                         </form>
                     </div>
                 </div>
