@@ -193,6 +193,32 @@
     
 
 /* --- Owners / Admin Section -- */
+/* Ensure the parent container allows scrolling */
+    .admin-list-container {
+        max-height: 120px; /* Ensure there is a limit */
+        overflow-y: auto; /* Enable vertical scrolling */
+        width: 100%; /* Ensure it takes full width */
+        display: flex;
+        flex-direction: column;;
+    }
+
+/* Custom scrollbar for better visibility */
+    .admin-list-container::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .admin-list-container::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .admin-list-container::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+    }
+
+    .admin-list-container::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
 
 
 /* --- Order Section -- */
@@ -206,6 +232,17 @@
 /* --- Financial Overview Section -- */
 
 /* --- Employee Management Section -- */
+
+/* --- Footer Section -- */
+    .Dashboard-footer{
+        background: #5b7359;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+    }
 
 /* --- Mobile Friendly --- */
 @media (max-width: 768px) {
