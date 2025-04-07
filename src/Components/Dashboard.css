@@ -237,11 +237,67 @@
     .Dashboard-footer{
         background: #5b7359;
         color: white;
-        text-align: center;
-        padding: 20px;
-        position: relative;
-        bottom: 0;
+        text-align: center; 
+        margin: 0 auto;
         width: 100%;
+        padding: 15px;
+    }
+
+    .Dashboard-footer-link{
+        color: navy;
+        padding-left: 5px;
+        text-decoration: none;
+    }
+
+    .close-btn{
+        background: red;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 8px 15px;
+        margin-left: 90%;
+    }
+
+    .close-btn:hover{
+        background: darkred;
+    }
+    
+    .Dashboard-footer-link:hover{
+        color: rgb(0, 0, 189);
+    }
+
+    .Dashboard-footer-contact-h2{
+        font-size: 2rem;
+        margin-bottom: 10px; 
+    }
+
+    .Dashboard-footer-contact-form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center
+    }
+    
+    .Dashboard-footer-contact-input{
+        width: 90%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .Dashboard-footer-contact-btn{
+        background: #5b7359;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 8px 15px;
+    }
+
+    .Dashboard-footer-contact-btn:hover{
+        background: #4a5b4a;
     }
 
 /* --- Mobile Friendly --- */
