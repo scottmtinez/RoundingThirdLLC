@@ -5,125 +5,125 @@
 */
 
 /* --- Dashboard Page Title --- */
-.Dashboard-h1 {
-    text-align: center;
-}
+    .Dashboard-h1 {
+        text-align: center;
+    }
 
 /* --- Dashboard Section --- */
-.Dashboard-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Creates exactly 3 columns */
-    gap: 20px;
-    padding: 20px;
-}
+    .Dashboard-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* Creates exactly 3 columns */
+        gap: 20px;
+        padding: 20px;
+    }
 
-.Dashboard-section {
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    transition: 0.3s ease-in-out;
-    min-height: 150px; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+    .Dashboard-section {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        transition: 0.3s ease-in-out;
+        min-height: 150px; 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 
-.Dashboard-section:hover {
-    transform: scale(1.02);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
+    .Dashboard-section:hover {
+        transform: scale(1.02);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
 
-.Dashboard-section h2 {
-    font-size: 27px;
-    color: #333;
-    font-weight: bolder;
-    margin-top: -45px;
-    margin-bottom: 8px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #ddd;
-}
+    .Dashboard-section h2 {
+        font-size: 27px;
+        color: #333;
+        font-weight: bolder;
+        margin-top: -45px;
+        margin-bottom: 8px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #ddd;
+    }
 
-.Dashboard-section p {
-    font-size: 14px;
-    color: #666;
-    margin-right: 35px;
-}
+    .Dashboard-section p {
+        font-size: 14px;
+        color: #666;
+        margin-right: 35px;
+    }
 
-.Dashboard-section li{
-    all: unset;
-    font-size: 12px;
-    border-bottom: 1px solid #ddd;
-}
+    .Dashboard-section li{
+        all: unset;
+        font-size: 12px;
+        border-bottom: 1px solid #ddd;
+    }
 
-.Dashboard-logo{
-    width: 75%;
-    height: auto;
-}
+    .Dashboard-logo{
+        width: 75%;
+        height: auto;
+    }
 
 
 /* --- Tracking Table --- */
-/* Container */
-    .Dashboard-section-spreadsheet{
-        width: 100vw;  /* Full width of the screen */
-        max-width: 100%;
-        padding: 20px;
-        overflow-x: auto; /* Allows horizontal scrolling if needed */
-    }
+    /* Container */
+        .Dashboard-section-spreadsheet{
+            width: 100vw;  /* Full width of the screen */
+            max-width: 100%;
+            padding: 20px;
+            overflow-x: auto; /* Allows horizontal scrolling if needed */
+        }
 
-/* Table container for responsiveness */
-    .table-container {
-        width: 100%;
-        overflow-x: auto;
-        padding: 10px;
-    }
-
-/* Table styling */
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        background: #ffffff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        overflow: hidden;
-    }
-
-/* Table header */
-    th {
-        background-color: #5b7359;
-        color: white;
-        padding: 12px;
-        text-align: left;
-        font-size: 16px;
-        width: 100%;
-    }
-
-/* Table rows */
-    td {
-        padding: 12px;
-        border-bottom: 1px solid #ddd;
-        font-size: 14px;
-    }
-
-/* Alternate row colors for better readability */
-    tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-
-/* Hover effect on rows */
-    tr:hover {
-        background-color: #f1f1f1;
-        transition: 0.3s;
-    }
-
-/* Make table responsive on smaller screens */
-    @media screen and (max-width: 600px) {
-        th, td {
+    /* Table container for responsiveness */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
             padding: 10px;
+        }
+
+    /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+    /* Table header */
+        th {
+            background-color: #5b7359;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-size: 16px;
+            width: 100%;
+        }
+
+    /* Table rows */
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
             font-size: 14px;
         }
-    }
+
+    /* Alternate row colors for better readability */
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+    /* Hover effect on rows */
+        tr:hover {
+            background-color: #f1f1f1;
+            transition: 0.3s;
+        }
+
+    /* Make table responsive on smaller screens */
+        @media screen and (max-width: 600px) {
+            th, td {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
 
 /* --- Account Requests --- */
     .accept-button, .reject-button {
@@ -280,6 +280,53 @@
 /* --- Financial Overview Section -- */
 
 /* --- Employee Management Section -- */
+
+/* --- Tracking Sheet Section -- */
+        .Dashboard-tracking-section{
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s ease-in-out;
+            min-height: 150px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    
+        .Dashboard-TrackingSheet-input{
+            border-radius: 5px;
+            border: 1px solid #b4b4b4;
+        }
+        
+        .Dashboard-TrackingSheet-delete-btn{
+            background: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            padding: 8px 15px;
+            margin-right: 0;
+        }
+
+        .Dashboard-TrackingSheet-delete-btn:hover{
+            background: darkred;
+        }
+
+        .Dashboard-TrackingSheet-AddRow-btn{
+            background: #5b7359;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            padding: 8px 15px;
+            margin-right: 0;
+        }
+
+        .Dashboard-TrackingSheet-AddRow-btn:hover{
+            background: #4a5b4a;
+        }
 
 /* --- Footer Section -- */
     .Dashboard-footer{
