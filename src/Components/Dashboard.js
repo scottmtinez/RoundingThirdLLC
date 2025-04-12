@@ -17,11 +17,24 @@ function Dashboard() {
         const [selectedAdmin, setSelectedAdmin] = useState(null);
         const [selectedMessage, setSelectedMessage] = useState(null);
         const [showPopup, setShowPopup] = useState(false);
+
         const [formData, setFormData] = useState({
             name: "",
             email: "",
             message: ""
         });
+
+        const [data, setData] = useState([
+            {
+              id: 1,
+              date: '',
+              description: '',
+              category: '',
+              assignedTo: '',
+              status: '',
+              timeSpent: '',
+            }
+          ]);
 
     // Fetch account requests from Firebase Firestore
         useEffect(() => {
@@ -49,28 +62,28 @@ function Dashboard() {
                 const userId = userCredential.user.uid; // Extract user ID
                 
                 // Update Firestore status
-                const userRef = doc(db, 'accountRequests', id);
-                console.log('Attempting to update user status to approved');
-                await updateDoc(userRef, { status: 'approved' });
-                console.log('Successfully updated user status to approved');
-                
-                console.log(`Attempting to delete account request with ID: ${id}`);
-                await deleteDoc(doc(db, 'accountRequests', id));
-                console.log(`Successfully deleted account request with ID: ${id}`);
+                    const userRef = doc(db, 'accountRequests', id);
+                    console.log('Attempting to update user status to approved');
+                    await updateDoc(userRef, { status: 'approved' });
+                    console.log('Successfully updated user status to approved');
+                    
+                    console.log(`Attempting to delete account request with ID: ${id}`);
+                    await deleteDoc(doc(db, 'accountRequests', id));
+                    console.log(`Successfully deleted account request with ID: ${id}`);
 
-                console.log('Attempting to add user to accounts collection');
-                await setDoc(doc(db, 'accounts', userId), {
-                    id: userId,
-                    email: email,
-                    position: position || 'Not specified', 
-                    createdAt: new Date()
-                });
-                console.log('Successfully added user to accounts collection');
+                    console.log('Attempting to add user to accounts collection');
+                    await setDoc(doc(db, 'accounts', userId), {
+                        id: userId,
+                        email: email,
+                        position: position || 'Not specified', 
+                        createdAt: new Date()
+                    });
+                    console.log('Successfully added user to accounts collection');
 
-                alert('Account approved!');
+                    alert('Account approved!');
 
                 // Update state
-                setAccountRequests(prevRequests => prevRequests.filter(req => req.id !== id));
+                    setAccountRequests(prevRequests => prevRequests.filter(req => req.id !== id));
             } catch (error) {
                 alert('Error approving account: ' + error.message);
             }
@@ -97,7 +110,7 @@ function Dashboard() {
                         ...doc.data()
                     }));
             
-                    console.log("Fetched admins:", request); // Debugging log
+                    console.log("Fetched admins:", request); 
                     setAdmins(request);
                 } catch (error) {
                     console.error("Error fetching users:", error);
@@ -145,6 +158,30 @@ function Dashboard() {
             } catch (error) {
                 alert('Error deleting message: ' + error.message);
             }
+        };
+
+    // Handle Input Change - Tracking Spreadsheet
+        const handleInputChange = (id, field, value) => {
+            setData(prev =>
+            prev.map(row => (row.id === id ? { ...row, [field]: value } : row))
+            );
+        };
+        
+        const addRow = () => {
+            const newRow = {
+            id: Date.now(),
+            date: '',
+            description: '',
+            category: '',
+            assignedTo: '',
+            status: '',
+            timeSpent: '',
+            };
+            setData([...data, newRow]);
+        };
+        
+        const deleteRow = (id) => {
+            setData(data.filter(row => row.id !== id));
         };
     
     // Footer/Contact Form Popup - Send Message
@@ -288,15 +325,62 @@ function Dashboard() {
                 </div>
             )}
 
-            {/* N/A */}
+            {/* Orders */}
+            <div className="Dashboard-section">
+                <h2>Orders</h2>
+            </div>
+
+            {/* Orders Popup*/}
+
+            {/* */}
             <div className="Dashboard-section">
                 <h2></h2>
             </div>
+
+
         </div>
+
             {/* Tracking Spreadsheet */}
-            <div className="Dashboard-section">
+            <div className="Dashboard-tracking-section">
                 <h2>Tracking Sheet</h2>
-                <p>Coming Soon...</p>
+                <table className="table-auto w-full border">
+                    <thead>
+                    <tr className="bg-gray-200">
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Assigned To</th>
+                        <th>Status</th>
+                        <th>Time</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {data.map(task => (
+                        <tr key={task.id}>
+                        {['date', 'description', 'category', 'assignedTo', 'status', 'timeSpent'].map(field => (
+                            <td key={field}>
+                            <input
+                                type="text"
+                                className="Dashboard-TrackingSheet-input"
+                                value={task[field]}
+                                onChange={e => handleInputChange(task.id, field, e.target.value)}
+                            />
+                            </td>
+                        ))}
+                        <td>
+                            <button
+                            className="Dashboard-TrackingSheet-delete-btn"
+                            onClick={() => deleteRow(task.id)}
+                            >
+                            Delete
+                            </button>
+                        </td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+                <button className="Dashboard-TrackingSheet-AddRow-btn"onClick={addRow}>+ Add Row</button>
             </div>
 
             {/* Footer Section */}
