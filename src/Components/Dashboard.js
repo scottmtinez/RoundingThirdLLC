@@ -17,6 +17,7 @@ function Dashboard() {
         const [selectedAdmin, setSelectedAdmin] = useState(null);
         const [selectedMessage, setSelectedMessage] = useState(null);
         const [showPopup, setShowPopup] = useState(false);
+        const [sortOrder, setSortOrder] = useState('asc');
 
         const [formData, setFormData] = useState({
             name: "",
@@ -169,19 +170,30 @@ function Dashboard() {
         
         const addRow = () => {
             const newRow = {
-            id: Date.now(),
-            date: '',
-            description: '',
-            category: '',
-            assignedTo: '',
-            status: '',
-            timeSpent: '',
+              id: Date.now(),
+              date: '',
+              description: '',
+              category: '',
+              assignedTo: '',
+              status: '',
+              timeSpent: '',
             };
             setData([...data, newRow]);
         };
-        
+
         const deleteRow = (id) => {
             setData(data.filter(row => row.id !== id));
+        };
+
+        const toggleSortByDate = () => {
+            const sorted = [...data].sort((a, b) => {
+              const dateA = new Date(a.date);
+              const dateB = new Date(b.date);
+              return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
+            });
+
+            setData(sorted);
+            setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
         };
     
     // Footer/Contact Form Popup - Send Message
@@ -342,45 +354,59 @@ function Dashboard() {
 
             {/* Tracking Spreadsheet */}
             <div className="Dashboard-tracking-section">
-                <h2>Tracking Sheet</h2>
-                <table className="table-auto w-full border">
-                    <thead>
-                    <tr className="bg-gray-200">
-                        <th>Date</th>
-                        <th>Description</th>
-                        <th>Category</th>
-                        <th>Assigned To</th>
-                        <th>Status</th>
-                        <th>Time</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {data.map(task => (
-                        <tr key={task.id}>
-                        {['date', 'description', 'category', 'assignedTo', 'status', 'timeSpent'].map(field => (
-                            <td key={field}>
-                            <input
-                                type="text"
-                                className="Dashboard-TrackingSheet-input"
-                                value={task[field]}
-                                onChange={e => handleInputChange(task.id, field, e.target.value)}
-                            />
-                            </td>
-                        ))}
-                        <td>
-                            <button
-                            className="Dashboard-TrackingSheet-delete-btn"
-                            onClick={() => deleteRow(task.id)}
-                            >
-                            Delete
-                            </button>
+            <h2>Tracking Sheet</h2>
+            <table className="table-auto w-full border">
+                <thead>
+                <tr className="">
+                    <th className="Dashboard-tracking-Date-header">
+                    Date
+                    <button
+                        onClick={toggleSortByDate}
+                        className="Dashboard-tracking-filter"
+                    >
+                        {sortOrder === 'asc' ? '↑' : '↓'}
+                    </button>
+                    </th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Assigned To</th>
+                    <th>Status</th>
+                    <th>Time</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {data.map(task => (
+                    <tr key={task.id}>
+                    {['date', 'description', 'category', 'assignedTo', 'status', 'timeSpent'].map(field => (
+                        <td key={field}>
+                        <input
+                            type="text"
+                            className="Dashboard-TrackingSheet-input"
+                            value={task[field]}
+                            onChange={e => handleInputChange(task.id, field, e.target.value)}
+                        />
                         </td>
-                        </tr>
                     ))}
-                    </tbody>
-                </table>
-                <button className="Dashboard-TrackingSheet-AddRow-btn"onClick={addRow}>+ Add Row</button>
+                    <td>
+                        <button
+                        className="Dashboard-TrackingSheet-delete-btn"
+                        onClick={() => deleteRow(task.id)}
+                        >
+                        Delete
+                        </button>
+                    </td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+
+                <button
+                    className="Dashboard-TrackingSheet-AddRow-btn mt-2"
+                    onClick={addRow}
+                >
+                    + Add Row
+                </button>
             </div>
 
             {/* Footer Section */}
