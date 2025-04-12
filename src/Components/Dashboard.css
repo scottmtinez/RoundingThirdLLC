@@ -328,6 +328,21 @@
             background: #4a5b4a;
         }
 
+        .Dashboard-tracking-filter{
+            background-color: transparent;
+            all: unset;
+            margin-left: 10px;
+            padding-left: 5px;
+            padding-right: 5px;
+            border: whitesmoke solid 1px;
+            border-radius: 3px;
+        }
+
+        .Dashboard-tracking-filter:hover{
+            color: navy;
+            border: navy solid 1px;
+        }
+
 /* --- Footer Section -- */
     .Dashboard-footer{
         position: fixed;
