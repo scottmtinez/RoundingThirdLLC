@@ -15,6 +15,7 @@ function Dashboard() {
         const [accountRequests, setAccountRequests] = useState([]);
         const [admins, setAdmins] = useState([]);
         const [selectedAdmin, setSelectedAdmin] = useState(null);
+        const [selectedMessage, setSelectedMessage] = useState(null);
         const [showPopup, setShowPopup] = useState(false);
         const [formData, setFormData] = useState({
             name: "",
@@ -75,7 +76,7 @@ function Dashboard() {
             }
         };
 
-    // Handle Reject
+    // Handle Reject - Account Requests
         const handleReject = async (id) => {
             try {
                 await deleteDoc(doc(db, 'accountRequests', id));
@@ -106,12 +107,46 @@ function Dashboard() {
             fetchAdmins();
         }, []);
 
+    // Handle Admin Delete - Admins List
+        const handleDelete = async (id) => {
+            try {
+                await deleteDoc(doc(db, 'accounts', id));
+                alert('Account deleted.');
+                setAdmins(prevRequests => prevRequests.filter(req => req.id !== id));
+            } catch (error) {
+                alert('Error deleting account: ' + error.message);
+            }
+        };
+
     // Fetch contact page messages
+        useEffect(() => {
+            const fetchContactMessages = async () => {
+                try {
+                    const querySnapshot = await getDocs(collection(db, 'ContactPage')); 
+                    const messages = querySnapshot.docs.map(doc => ({
+                        id: doc.id,
+                        ...doc.data()
+                    }));
+                    console.log("Fetched contact messages: ", messages); 
+                    setContactMessages(messages); 
+                } catch (error) {
+                    console.error("Error fetching data:", error);
+                }
+            }
+            fetchContactMessages();
+        }, []); 
 
+    // Handle Message Delete - Message List
+        const handleDeleteMessage = async (id) => {
+            try {
+                await deleteDoc(doc(db, 'ContactPage', id));
+                alert('Message deleted.');
+                setContactMessages(prevRequests => prevRequests.filter(req => req.id !== id));
+            } catch (error) {
+                alert('Error deleting message: ' + error.message);
+            }
+        };
     
-
-
-
     // Footer/Contact Form Popup - Send Message
         const handleChange = (e) => {
             setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -121,10 +156,10 @@ function Dashboard() {
             e.preventDefault();
     
             emailjs.send(
-                "HIIDDEN",     
-                "HIDDEN",    
+                "service_hg0jpwf",     
+                "template_z00wdye",    
                 formData,
-                "HIDDEN"   
+                "Cdu-w74-z5WdXHRRi"   
             ).then(() => {
                 alert("Message sent successfully!");
                 setShowPopup(false);
@@ -171,19 +206,6 @@ function Dashboard() {
                 )}
             </div>
 
-            {/* Admin Details Popup */}
-            {selectedAdmin && (
-                <div className="popup-overlay">
-                    <div className="popup-box">
-                        <h2>Admin Details</h2>
-                        <p><strong>Name:</strong> {selectedAdmin.Name}</p>
-                        <p><strong>Email:</strong> {selectedAdmin.email}</p>
-                        <p><strong>Position:</strong> {selectedAdmin.position || "Not specified"}</p>
-                        <button className="close-button" onClick={() => setSelectedAdmin(null)}>Close</button>
-                    </div>
-                </div>
-            )}
-
             {/* Admin List Section */}
             <div className="Dashboard-section">
                 <h2>Account Admins</h2>
@@ -198,6 +220,10 @@ function Dashboard() {
                                         onClick={() => setSelectedAdmin(admin)}
                                     >
                                         {admin.Name}
+
+                                        <button className='admin-reject-button' onClick={() => handleDelete(admin.id)}>
+                                            <i className="bi bi-x-square-fill"></i>
+                                        </button>
                                     </p>
                                 </li>
                             ))}
@@ -208,11 +234,59 @@ function Dashboard() {
                 )}
             </div>
 
+            {/* Admin Details Popup */}
+            {selectedAdmin && (
+                <div className="popup-overlay">
+                    <div className="popup-box">
+                        <h2>Admin Details</h2>
+                        <p><strong>Name:</strong> {selectedAdmin.Name}</p>
+                        <p><strong>Email:</strong> {selectedAdmin.email}</p>
+                        <p><strong>Position:</strong> {selectedAdmin.position || "Not specified"}</p>
+                        <button className="close-button" onClick={() => setSelectedAdmin(null)}>Close</button>
+                    </div>
+                </div>
+            )}
+
             {/* Contact Page Messages Section */}
             <div className="Dashboard-section">
-                <h2>Messages</h2>
-                <p>Coming Soon...</p>
+                <h2>Contact Messages</h2>
+                    {contactMessages.length > 0 ? (
+                        <div className="message-list-container">
+                            <ul className="message-list">
+                                {contactMessages.map(message => (
+                                    <li key={message.id}>
+                                        <p 
+                                            className="message-link" 
+                                            onClick={() => setSelectedMessage(message)}
+                                        >
+                                            {message.name}
+
+                                            <button className='message-reject-button' onClick={() => handleDeleteMessage(message.id)}>
+                                                <i className="bi bi-x-square-fill"></i>
+                                            </button>
+                                        </p>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ) : (
+                        <p>No messages found.</p>
+                    )}
             </div>
+
+            {/* Message Details Popup */}
+            {selectedMessage && (
+                <div className="popup-overlay">
+                    <div className="popup-box">
+                        <h2>Message Details</h2>
+                        <p><strong>Name:</strong> {selectedMessage.name}</p>
+                        <p><strong>Email:</strong> {selectedMessage.email}</p>
+                        <p><strong>Phone:</strong> {selectedMessage.phone}</p>
+                        <p><strong>Message:</strong> {selectedMessage.message}</p>
+                        <button className="close-button" onClick={() => setSelectedMessage(null)}>Close</button>
+                    </div>
+                </div>
+            )}
 
             {/* N/A */}
             <div className="Dashboard-section">
@@ -274,9 +348,6 @@ function Dashboard() {
                     </div>
                 </div>
             )}
-
-
-{/* Test */}
         </div>
     );
 }
