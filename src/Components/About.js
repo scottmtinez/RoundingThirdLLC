@@ -14,8 +14,9 @@ function About() {
         <div className="about-text">
           <h2>Who We Are</h2>
           <p>
-            We are a team of professional movers dedicated to making your relocation smooth and hassle-free. 
-            With years of experience, we have helped thousands of families and businesses move safely and efficiently.
+            We're Michael Seegers & Caleb Kelley, the co-founders of Rounding Third. What started as a shared passion for building something of our own quickly
+            became a mission to meet a real need - especially in the senior living community - for movers who lead with care, respect, & integrity. We saw the opportunity
+            to make a difference, one move at a time, and we're proud to serve our neighbors with quality, honesty, & heart.
           </p>
         </div>
 
