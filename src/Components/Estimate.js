@@ -28,38 +28,10 @@ function Estimate() {
             furnitureAssembly: false,
         });
 
-    // Pricing Constants
-        const basePrices = {
-            studio: 200,
-            "1-bedroom": 300,
-            "2-bedroom": 500,
-            "3-bedroom": 700,
-            "4+ bedroom": 1000,
-        };
-        const servicePrices = {
-            packing: 100,
-            storage: 150,
-            furnitureAssembly: 75,
-        };
+    // Sends Email to Admins for Manual review
+        
 
-    // Function to calculate estimate
-        const calculateEstimate = () => {
-            if (!homeSize) {
-                alert("Please select a home size.");
-                return;
-            }
-
-            let cost = basePrices[homeSize];
-
-            // Add additional services cost
-                Object.keys(services).forEach(service => {
-                    if (services[service]) {
-                        cost += servicePrices[service];
-                    }
-                });
-
-                setEstimatedCost(cost);
-        };
+    //
 
     return (
         <div className="Estimate-container">
@@ -99,17 +71,17 @@ function Estimate() {
 
             {/* Contact Info */}
             <label className='Estimate-label'>Full Name:</label>
-            <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} />
+            <input type="text" placeholder='John Smith' value={fullName} onChange={(e) => setFullName(e.target.value)} />
 
             <label className='Estimate-label'>Email:</label>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="email" placeholder='JohnSmith@gmail.com' value={email} onChange={(e) => setEmail(e.target.value)} />
 
             <label className='Estimate-label'>Phone Number:</label>
-            <input type="tel" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+            <input type="tel" placeholder='(000) 000-0000' value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
 
             {/* Items & Services */}
             <label className='Estimate-label'>Estimated Number of Boxes:</label>
-            <input type="number" value={boxes} onChange={(e) => setBoxes(e.target.value)} />
+            <input type="number" placeholder='1 - 5 Boxes' value={boxes} onChange={(e) => setBoxes(e.target.value)} />
 
             <label className='Estimate-label'>Any large or specialty items?</label>
             <textarea className='Estimate-textarea' value={specialtyItems} onChange={(e) => setSpecialtyItems(e.target.value)} placeholder="Piano, antique furniture, medical equipment, etc." />
@@ -121,14 +93,8 @@ function Estimate() {
             <textarea className='Estimate-textarea' value={additionalInfo} onChange={(e) => setAdditionalInfo(e.target.value)} placeholder="Anything else we should know?" />
 
             {/* Calculate Estimate Button */}
-            <button onClick={calculateEstimate} className="Estimate-button">Get Estimate</button>
+            <button className="Estimate-button">Get Estimate</button>
 
-            {/* Display Estimated Cost */}
-            {estimatedCost > 0 && (
-                <div className="Estimate-result">
-                    <h2>Estimated Cost: ${estimatedCost}</h2>
-                </div>
-            )}
         </div>
     </div>
     );
