@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
+import { db } from './FirebaseConfig';
+import { collection, addDoc } from 'firebase/firestore';
 import './Estimate.css';
 
 function Estimate() {
@@ -17,10 +20,6 @@ function Estimate() {
         const [specialtyItems, setSpecialtyItems] = useState('');
         const [majorItems, setMajorItems] = useState('');
         const [additionalInfo, setAdditionalInfo] = useState('');
-        const [estimatedCost, setEstimatedCost] = useState(0);
-        const [packingServices, setPackingServices] = useState(false); // if you add a checkbox
-        const [hasElevator, setHasElevator] = useState('');
-        const [urgency, setUrgency] = useState('');
 
         const [services, setServices] = useState({
             packing: false,
@@ -29,9 +28,63 @@ function Estimate() {
         });
 
     // Sends Email to Admins for Manual review
-        
+        const sendEstimateEmail = async (templateParams) => {
+            try {
+            const result = await emailjs.send(
+                'HIDDEN',    
+                'HIDDEN',    
+                templateParams,
+                'HIDDEN'      
+            );
+            console.log('Email successfully sent:', result.text);
+            return true;
+            } catch (error) {
+            console.error('Failed to send email:', error);
+            return false;
+            }
+        };
 
-    //
+    // Handle Form Submission
+        const handleEstimateSubmit = async () => {
+            const templateParams = {
+                name: fullName,
+                email: email,
+                phone: phoneNumber,
+                pickup_location: pickupLocation,
+                dropoff_location: dropoffLocation,
+                moving_date: movingDate,
+                flexible_date: flexibleDate,
+                residence_type: residenceType,
+                room_size: roomSize,
+                boxes: boxes,
+                specialty_items: specialtyItems,
+                major_items: majorItems,
+                additional_info: additionalInfo
+            };
+        
+            try {
+                // Add to Firestore
+                    await addDoc(collection(db, 'estimates'), {
+                        ...templateParams,
+                        timestamp: new Date()
+                    });
+                    
+                    console.log('Estimate added to Firestore');
+        
+                // Send Email
+                    const success = await sendEstimateEmail(templateParams);
+
+                    if (success) {
+                        alert("Your estimate request has been sent successfully!");
+                    } else {
+                        alert("Failed to send your estimate. Please try again.");
+                    }
+        
+            } catch (error) {
+                console.error("Error submitting estimate:", error);
+                alert("Something went wrong. Please try again.");
+            }
+        };   
 
     return (
         <div className="Estimate-container">
@@ -93,7 +146,7 @@ function Estimate() {
             <textarea className='Estimate-textarea' value={additionalInfo} onChange={(e) => setAdditionalInfo(e.target.value)} placeholder="Anything else we should know?" />
 
             {/* Calculate Estimate Button */}
-            <button className="Estimate-button">Get Estimate</button>
+            <button className="Estimate-button" onClick={handleEstimateSubmit}>Get Estimate</button>
 
         </div>
     </div>
