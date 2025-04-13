@@ -6,27 +6,30 @@ function Home() {
       {/* Hero Section */}
       <header className="hero">
         <div className="hero-content">
-          <h1>Reliable & Affordable Moving Services</h1>
-          <p>Let us make your move stress-free and seamless.</p>
-          <a href="/contact" className="cta-button">Get a Free Quote</a>
+          <h1>From First Base to Your Front Door - We're With You Every Step.</h1>
+          <p>
+            As two friends who built Rounding Third with hard work and heart, we know what it takes to go the extra mile. 
+            We treat your move like it's our own - because for us, it's more than a job. It's a calling!
+          </p>
+          <a href="/estimate" className="cta-button">Get a Free Quote</a>
         </div>
       </header>
 
       {/* Services Overview */}
       <section className="services-overview">
-        <h2>Our Services</h2>
+        <h2>Our Senior Moving Services</h2>
         <div className="services-list">
           <div className="service-item">
-            <h3>Residential Moving</h3>
-            <p>Safe and efficient home moving services.</p>
+            <h3>Compassionate Relocation</h3>
+            <p>We help seniors transition smoothly into their new homes with care and respect every step of the way.</p>
           </div>
           <div className="service-item">
-            <h3>Commercial Moving</h3>
-            <p>Office and business relocations with minimal downtime.</p>
+            <h3>Family Coordination</h3>
+            <p>We work closely with family members and caregivers to ensure a seamless and supportive moving experience.</p>
           </div>
           <div className="service-item">
-            <h3>Packing & Unpacking</h3>
-            <p>We pack and unpack your belongings with care.</p>
+            <h3>Packing & Settling In</h3>
+            <p>We carefully pack, transport, and help set up your new space so it feels like home right away.</p>
           </div>
         </div>
       </section>
