@@ -20,6 +20,8 @@ function Estimate() {
         const [specialtyItems, setSpecialtyItems] = useState('');
         const [majorItems, setMajorItems] = useState('');
         const [additionalInfo, setAdditionalInfo] = useState('');
+        const [notification, setNotification] = useState({ message: '', type: '' });
+
 
         const [services, setServices] = useState({
             packing: false,
@@ -31,10 +33,10 @@ function Estimate() {
         const sendEstimateEmail = async (templateParams) => {
             try {
             const result = await emailjs.send(
-                'HIDDEN',    
-                'HIDDEN',    
+                'HIDDEN',     // Replace with your EmailJS service ID
+                'HIDDEN',    // Replace with your EmailJS template ID
                 templateParams,
-                'HIDDEN'      
+                'HIDDEN'      // Replace with your EmailJS public key
             );
             console.log('Email successfully sent:', result.text);
             return true;
@@ -63,28 +65,39 @@ function Estimate() {
             };
         
             try {
-                // Add to Firestore
-                    await addDoc(collection(db, 'estimates'), {
-                        ...templateParams,
-                        timestamp: new Date()
-                    });
-                    
-                    console.log('Estimate added to Firestore');
-        
-                // Send Email
-                    const success = await sendEstimateEmail(templateParams);
+                const success = await sendEstimateEmail(templateParams);
+            
+                if (success) {
+                  setNotification({ message: 'Your estimate request has been sent successfully!', type: 'success' });
+            
+                  // Reset form
+                    setHomeSize('');
+                    setPickupLocation('');
+                    setDropoffLocation('');
+                    setMovingDate('');
+                    setFlexibleDate('');
+                    setResidenceType('');
+                    setRoomSize('');
+                    setFullName('');
+                    setEmail('');
+                    setPhoneNumber('');
+                    setBoxes('');
+                    setSpecialtyItems('');
+                    setMajorItems('');
+                    setAdditionalInfo('');
+                    setServices({ packing: false, storage: false, furnitureAssembly: false });
+                } else {
+                    setNotification({ message: 'Failed to send your estimate. Please try again.', type: 'error' });
+                }
 
-                    if (success) {
-                        alert("Your estimate request has been sent successfully!");
-                    } else {
-                        alert("Failed to send your estimate. Please try again.");
-                    }
-        
-            } catch (error) {
-                console.error("Error submitting estimate:", error);
-                alert("Something went wrong. Please try again.");
-            }
-        };   
+              } catch (error) {
+                console.error('Submission Error:', error);
+                setNotification({ message: 'An error occurred while sending your request.', type: 'error' });
+              }
+            
+              // Hide the message after a few seconds
+                setTimeout(() => setNotification({ message: '', type: '' }), 2000);
+            };
 
     return (
         <div className="Estimate-container">
@@ -146,6 +159,23 @@ function Estimate() {
             <textarea className='Estimate-textarea' value={additionalInfo} onChange={(e) => setAdditionalInfo(e.target.value)} placeholder="Anything else we should know?" />
 
             {/* Calculate Estimate Button */}
+            {notification.message && (
+                <div
+                    className={`notification ${notification.type}`}
+                    style={{
+                    padding: '10px 15px',
+                    marginBottom: '15px',
+                    borderRadius: '5px',
+                    fontWeight: 'bold',
+                    color: notification.type === 'success' ? 'green' : 'red',
+                    backgroundColor: notification.type === 'success' ? '#e6ffed' : '#ffe6e6',
+                    border: `1px solid ${notification.type === 'success' ? 'green' : 'red'}`,
+                    }}
+                >
+                    {notification.message}
+                </div>
+            )}
+
             <button className="Estimate-button" onClick={handleEstimateSubmit}>Get Estimate</button>
 
         </div>
