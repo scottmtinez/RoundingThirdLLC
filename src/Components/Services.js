@@ -12,24 +12,28 @@ function Services() {
       {/* Services List */}
       <section className="services-list">
         <div className="service-card">
-          <h2>🏡 Residential Moving</h2>
-          <p>Safe and efficient home moving services, ensuring a smooth transition.</p>
+          <h3>Compassionate Relocation</h3>
+          <p>We help seniors transition smoothly into their new homes with care and respect every step of the way.</p>
         </div>
         <div className="service-card">
-          <h2>🏢 Commercial Moving</h2>
-          <p>Office and business relocations with minimal downtime.</p>
+          <h3>Downsizing Assistance</h3>
+          <p>From sorting to donating and disposing, we assist in making downsizing stress-free and simple.</p>
         </div>
         <div className="service-card">
-          <h2>📦 Packing & Unpacking</h2>
-          <p>Professional packing services to protect your valuable items.</p>
+          <h3>Packing & Settling In</h3>
+          <p>We carefully pack, transport, and help set up your new space so it feels like home right away.</p>
         </div>
         <div className="service-card">
-          <h2>🚚 Long-Distance Moving</h2>
-          <p>Reliable long-distance moves with tracking and timely delivery.</p>
+          <h3>Family Coordination</h3>
+          <p>We work closely with family members and caregivers to ensure everyone is informed and comfortable with the moving plan.</p>
         </div>
         <div className="service-card">
-          <h2>🔐 Storage Solutions</h2>
-          <p>Secure and climate-controlled storage options for your belongings.</p>
+          <h3>Furniture Arrangement</h3>
+          <p>We’ll arrange furniture and belongings based on the new space layout to prioritize safety and familiarity.</p>
+        </div>
+        <div className="service-card">
+          <h3>Move Day Support</h3>
+          <p>Our friendly team is on hand during move day to answer questions, provide updates, and handle unexpected needs.</p>
         </div>
       </section>
 
