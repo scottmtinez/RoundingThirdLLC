@@ -49,6 +49,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </Router>
+      
       <footer className='Footer'>© 2025 Rounding Third LLC All rights reserved.</footer>
     </div>
   );
