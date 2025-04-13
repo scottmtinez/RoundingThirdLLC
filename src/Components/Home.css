@@ -31,6 +31,16 @@
     }
 
     .hero h1 {
+        background-color: #57776a80;
+        border-radius: 8px;
+    }
+
+    .hero p {
+        background-color: #57776a80;
+        border-radius: 8px;
+    }
+
+    .hero h1 {
         font-size: 48px;
         margin-bottom: 15px;
     }
@@ -165,7 +175,13 @@
 
 /* --- Mobile Styles --- */
     @media (max-width: 768px) {
-        .hero{
-            color: #2c3e50;
+        .hero h1 {
+            background-color: #57776a80;
+            border-radius: 8px;
+        }
+    
+        .hero p {
+            background-color: #57776a80;
+            border-radius: 8px;
         }
     }
