@@ -18,6 +18,8 @@ function Dashboard() {
         const [selectedMessage, setSelectedMessage] = useState(null);
         const [showPopup, setShowPopup] = useState(false);
         const [sortOrder, setSortOrder] = useState('asc');
+        const [estimates, setEstimates] = useState([]);
+        const [selectedEstimate, setSelectedEstimate] = useState(null);
 
         const [formData, setFormData] = useState({
             name: "",
@@ -195,6 +197,34 @@ function Dashboard() {
             setData(sorted);
             setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
         };
+
+    // Handle Estimates - Estimates List
+        useEffect(() => {
+            const fetchEstimates = async () => {
+                try {
+                    const querySnapshot = await getDocs(collection(db, 'estimates'));
+                    const estimateData = querySnapshot.docs.map(doc => ({
+                        id: doc.id,
+                        ...doc.data()
+                    }));
+                    setEstimates(estimateData);
+                } catch (error) {
+                    console.error("Error fetching estimates:", error);
+                }
+            };
+        
+            fetchEstimates();
+        }, []);
+
+        const handleDeleteEstimate = async (id) => {
+            try {
+                await deleteDoc(doc(db, 'estimates', id));
+                setEstimates(prev => prev.filter(estimate => estimate.id !== id));
+                alert('Estimate deleted.');
+            } catch (error) {
+                alert('Error deleting estimate: ' + error.message);
+            }
+        };
     
     // Footer/Contact Form Popup - Send Message
         const handleChange = (e) => {
@@ -337,10 +367,58 @@ function Dashboard() {
                 </div>
             )}
 
-            {/* Orders */}
+            {/* Estiamtes */}
             <div className="Dashboard-section">
-                <h2>Orders</h2>
+                <h2>Estimates</h2>
+                {estimates.length > 0 ? (
+                    <div className="estimate-list-container">
+                        <ul className="estimate-list">
+                            {estimates.map(est => (
+                                <li key={est.id}>
+                                    <p 
+                                        className="estimate-link"
+                                        onClick={() => setSelectedEstimate(est)}
+                                    >
+                                        {est.name || "Unnamed Request"}
+                                        <button
+                                            className="estimate-del-btn"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleDeleteEstimate(est.id);
+                                            }}
+                                        >
+                                            <i className="bi bi-x-square-fill"></i>
+                                        </button>
+                                    </p>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ) : (
+                    <p>No estimates found.</p>
+                )}
             </div>
+
+            {/* Estimats Popup */}
+            {selectedEstimate && (
+                <div className="popup-overlay">
+                    <div className="popup-box">
+                        <h2>Estimate Details</h2>
+                        <p><strong>Name:</strong> {selectedEstimate.name}</p>
+                        <p><strong>Email:</strong> {selectedEstimate.email}</p>
+                        <p><strong>Phone:</strong> {selectedEstimate.phone}</p>
+                        <p><strong>Pick-Up:</strong> {selectedEstimate.pickup_location}</p>
+                        <p><strong>Drop-Off:</strong> {selectedEstimate.dropoff_location}</p>
+                        <p><strong>Move Date:</strong> {selectedEstimate.moving_date}</p>
+                        <p><strong>Residence Type:</strong> {selectedEstimate.residence_type}</p>
+                        <p><strong>Number of Rooms:</strong> {selectedEstimate.room_size}</p>
+                        <p><strong>Special Items:</strong> {selectedEstimate.specialty_items}</p>
+                        <p>Submitted: {selectedEstimate.submitted_at}</p>
+                        <button className="estimate-respond-btn" title="Go to Titan Email" onClick={() => window.open("https://app.titan.email", "_blank")}><i className="bi bi-send"></i></button>
+                        <button className="close-button" onClick={() => setSelectedEstimate(null)}>Close</button>
+                    </div>
+                </div>
+            )}
 
             {/* Orders Popup*/}
 
