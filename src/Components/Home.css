@@ -69,34 +69,31 @@
 
 /* Services Overview Section */
     .services-overview {
-        padding: 40px 20px;
         text-align: center;
-        margin: 0 auto;
+        padding: 2rem;
     }
-
-    .services-overview h2 {
-        font-size: 36px;
-        color: #2c3e50;
-        margin-bottom: 40px;
-    }
-
+    
     .services-list {
         display: flex;
-        justify-content: center; 
-        align-items: center; 
-        gap: 20px; 
-        flex-wrap: wrap; 
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
     }
-
+    
     .service-item {
-        background-color: #f9f9f9;
-        border-radius: 8px;
-        padding: 30px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        flex: 1;
-        max-width: 300px;
-        text-align: center;
-        transition: transform 0.3s, box-shadow 0.3s;
+        background-color: #f8f8f8;
+        padding: 1.5rem;
+        border-radius: 10px;
+        width: 280px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        text-align: left;
+        transition: transform 0.3s ease;
+    }
+    
+    .service-item:hover {
+        transform: translateY(-5px);
     }
 
     .service-item:hover {
