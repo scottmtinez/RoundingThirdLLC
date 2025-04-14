@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "./FirebaseConfig";
 import { onAuthStateChanged, signOut, createUserWithEmailAndPassword } from "firebase/auth";
-import { collection, getDocs, deleteDoc, updateDoc, doc, setDoc } from "firebase/firestore";
+import { collection, getDocs, deleteDoc, updateDoc, doc, setDoc, addDoc } from "firebase/firestore";
 import "./Dashboard.css";
 import logo from '../images/Logo.png';
 import emailjs from "@emailjs/browser";
@@ -20,6 +20,9 @@ function Dashboard() {
         const [sortOrder, setSortOrder] = useState('asc');
         const [estimates, setEstimates] = useState([]);
         const [selectedEstimate, setSelectedEstimate] = useState(null);
+        const [showModal, setShowModal] = useState(false);
+        const [workOrders, setWorkOrders] = useState([]);
+        const [selectedOrder, setSelectedOrder] = useState(null);
 
         const [formData, setFormData] = useState({
             name: "",
@@ -37,7 +40,16 @@ function Dashboard() {
               status: '',
               timeSpent: '',
             }
-          ]);
+        ]);
+
+        const [workOrderData, setWorkOrderData] = useState({
+            orderNumber: '',
+            clientName: '',
+            movingDate: '',
+            clientAddress: '',
+            status: '',
+            shortDesc: ''
+        });
 
     // Fetch account requests from Firebase Firestore
         useEffect(() => {
@@ -225,6 +237,54 @@ function Dashboard() {
                 alert('Error deleting estimate: ' + error.message);
             }
         };
+
+    // Handle Work Order - Add Work Order
+        const handleAddWorkOrder = (e) => {
+            const { name, value } = e.target;
+            setWorkOrderData((prevData) => ({ ...prevData, [name]: value }));
+        };
+
+        const handleAddWorkOrderSubmit = async (e) => {
+            e.preventDefault();
+          
+            try {
+              await addDoc(collection(db, 'work_orders'), {
+                ...workOrderData,
+                createdAt: new Date()
+              });
+              setWorkOrderData({
+                orderNumber: '',
+                clientName: '',
+                movingDate: '',
+                clientAddress: '',
+                status: '',
+                shortDesc: ''
+              });
+              setShowModal(false);
+              alert('Work order submitted!');
+            } catch (error) {
+              console.error('Error adding document:', error);
+              alert('Something went wrong. Try again.');
+            }
+          };
+
+        // Fetch Work Orders
+            useEffect(() => {
+                const fetchWorkOrders = async () => {
+                try {
+                    const querySnapshot = await getDocs(collection(db, "work_orders"));
+                    const orders = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    setWorkOrders(orders);
+                } catch (error) {
+                    console.error("Error fetching work orders:", error);
+                }
+                };
+            
+                fetchWorkOrders();
+            }, []);
+            
+
+
     
     // Footer/Contact Form Popup - Send Message
         const handleChange = (e) => {
@@ -422,15 +482,108 @@ function Dashboard() {
 
             {/* Work Orders Section */}
             <div className="Dashboard-section">
-                <h2>Work Orders<button className="WorkOrder-Add-btn"><i class="bi bi-plus-square"></i></button></h2>
-                
+            <h2>
+                Work Orders
+                <button className="WorkOrder-Add-btn" onClick={() => setShowModal(true)}>
+                    <i className="bi bi-plus-square"></i>
+                </button>
+            </h2>
+
+                {workOrders.length > 0 ? (
+                    <div className="work-order-list-container">
+                        <ul className="work-order-list">
+                            {workOrders.map((order) => (
+                            <li key={order.id} className="work-order-item">
+                                <span className="work-order-link" onClick={() => setSelectedOrder(order)}>
+                                    {order.clientName}
+                                </span>
+                            </li>
+                            ))}
+                        </ul>
+                    </div>
+                ) : (
+                    <p>No work orders found.</p>
+                )}
             </div>
 
-            {/* Work Order Popup */}
+            {/* Add Work Order Popup */}
+            {showModal && (
+                <div className="popup-overlay">
+                    <div className="popup-box">
+                        <h2>Work Order</h2><hr />
+                        <form className="WorkOrder-form" onSubmit={handleAddWorkOrderSubmit}>
+                            <input
+                                type="text"
+                                name="orderNumber"
+                                value={workOrderData.orderNumber}
+                                onChange={handleAddWorkOrder}
+                                placeholder="Order Number [A123...]"
+                                required
+                            />
+                            <input
+                                type="text"
+                                name="clientName"
+                                value={workOrderData.clientName}
+                                onChange={handleAddWorkOrder}
+                                placeholder="Client Name..."
+                                required
+                            />
+                            <input
+                                type="date"
+                                name="movingDate"
+                                value={workOrderData.movingDate}
+                                onChange={handleAddWorkOrder}
+                                placeholder="Moving Date..."
+                                required
+                            />
+                            <input
+                                type="text"
+                                name="clientAddress"
+                                value={workOrderData.clientAddress}
+                                onChange={handleAddWorkOrder}
+                                placeholder="Client Address..."
+                                required
+                            />
+                            <input
+                                type="text"
+                                name="status"
+                                value={workOrderData.status}
+                                onChange={handleAddWorkOrder}
+                                placeholder="Status..."
+                                required
+                            />
+                            <textarea
+                                name="shortDesc"
+                                value={workOrderData.shortDesc}
+                                onChange={handleAddWorkOrder}
+                                placeholder="Short Description..."
+                                required
+                            />
+                            <hr />
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            )}
 
+            {/* View Work Order Popup */}
+            {selectedOrder && (
+                <div className="popup-overlay">
+                    <div className="popup-box">
+                        <h2>Work Order Details</h2><hr />
+                        <p><strong>Order Number:</strong> {selectedOrder.orderNumber}</p>
+                        <p><strong>Client Name:</strong> {selectedOrder.clientName}</p>
+                        <p><strong>Moving Date:</strong> {selectedOrder.movingDate}</p>
+                        <p><strong>Client Address:</strong> {selectedOrder.clientAddress}</p>
+                        <p><strong>Status:</strong> {selectedOrder.status}</p>
+                        <p><strong>Description:</strong> {selectedOrder.shortDesc}</p>
+                        <button className="update-button" onClick={() => setSelectedOrder(null)}>Update</button>
+                        <button className="close-button" onClick={() => setSelectedOrder(null)}>Close</button>
+                    </div>
+                </div>
+            )}
 
-
-        </div>
+    </div>
 
             {/* Tracking Spreadsheet */}
             <div className="Dashboard-tracking-section">
