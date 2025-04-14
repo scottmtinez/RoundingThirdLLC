@@ -183,8 +183,8 @@
 
     .admin-link{
         cursor: pointer;
-    color: blue;
-    text-decoration: none; /* Removes underline */
+        color: blue;
+        text-decoration: none; 
     }
     
     .admin-link:hover {
@@ -195,9 +195,9 @@
 /* --- Owners / Admin Section -- */
     /* Ensure the parent container allows scrolling */
         .admin-list-container {
-            max-height: 120px; /* Ensure there is a limit */
-            overflow-y: auto; /* Enable vertical scrolling */
-            width: 100%; /* Ensure it takes full width */
+            max-height: 120px; 
+            overflow-y: auto; 
+            width: 100%; 
             display: flex;
             flex-direction: column;;
         }
@@ -228,9 +228,9 @@
 /* --- Messages Section -- */
     /* Ensure the parent container allows scrolling */
         .message-list-container {
-            max-height: 120px; /* Ensure there is a limit */
-            overflow-y: auto; /* Enable vertical scrolling */
-            width: 100%; /* Ensure it takes full width */
+            max-height: 120px;
+            overflow-y: auto; 
+            width: 100%; 
             display: flex;
             flex-direction: column;;
         }
@@ -269,17 +269,80 @@
             font-size: 1rem;
         }
 
-/* --- Order Section -- */
+/* --- Estimate Section -- */
+        .estimate-list-container {
+            max-height: 75px; 
+            overflow-y: auto; 
+            width: 100%; 
+            display: flex;
+            flex-direction: column;;
+        }
 
-/* --- Inventory Section -- */
+        .estimate-list-container::-webkit-scrollbar {
+            width: 8px;
+        }
 
-/* --- Sales Section -- */
+        .estimate-list-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
 
-/* --- Customer Section -- */
+        .estimate-list-container::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
 
-/* --- Financial Overview Section -- */
+        .message-list-container::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
 
-/* --- Employee Management Section -- */
+        .estimate-link{
+            cursor: pointer;
+            color: blue;
+            text-decoration: none; 
+        }
+
+        .estimate-link:hover{
+            color: darkblue;
+        }
+
+        .estimate-del-btn{
+            all: unset;
+            font-size: 1rem;
+        }
+
+        .estimate-respond-btn{
+            all: unset;
+            font-size: 1.52rem;
+            margin-right: 10px;
+        }
+
+        .estimate-respond-btn:hover{
+            color: rgb(0, 0, 190);
+            border: rgb(0, 0, 190) solid 1px;
+            border-radius: 5px;
+        }
+
+        .bi.bi-send{
+            color: navy;
+            padding: 2px;
+            border-radius: 3px;
+        }
+
+        .bi.bi-send:hover{
+            color: rgb(0, 0, 190);
+        }
+
+/* --- Work Order Section --- */
+    .WorkOrder-Add-btn{
+        background-color: transparent;
+        color: navy;
+        border: none;
+        cursor: pointer;
+    }
+
+    .WorkOrder-Add-btn:hover{
+        color: rgb(0, 0, 235);
+    }
 
 /* --- Tracking Sheet Section -- */
         .Dashboard-tracking-section{
