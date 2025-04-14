@@ -420,12 +420,14 @@ function Dashboard() {
                 </div>
             )}
 
-            {/* Orders Popup*/}
-
-            {/* */}
+            {/* Work Orders Section */}
             <div className="Dashboard-section">
-                <h2></h2>
+                <h2>Work Orders<button className="WorkOrder-Add-btn"><i class="bi bi-plus-square"></i></button></h2>
+                
             </div>
+
+            {/* Work Order Popup */}
+
 
 
         </div>
