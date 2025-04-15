@@ -283,6 +283,27 @@ function Dashboard() {
                 fetchWorkOrders();
             }, []);
             
+        // Handle Work Order - Update Work Order
+            const handleUpdateOrder = async () => {
+                if (!selectedOrder || !selectedOrder.id) return;
+                    try {
+                        const docRef = doc(db, 'work_orders', selectedOrder.id);
+
+                        await updateDoc(docRef, {
+                            orderNumber: selectedOrder.orderNumber,
+                            clientName: selectedOrder.clientName,
+                            movingDate: selectedOrder.movingDate,
+                            clientAddress: selectedOrder.clientAddress,
+                            status: selectedOrder.status,
+                            shortDesc: selectedOrder.shortDesc
+                        });
+                        
+                        setSelectedOrder(null); 
+                    } catch (error) {
+                        console.error('Error updating work order:', error);
+                        alert('Failed to update work order.');
+                    }
+            };
 
 
     
@@ -568,19 +589,75 @@ function Dashboard() {
 
             {/* View Work Order Popup */}
             {selectedOrder && (
-                <div className="popup-overlay">
-                    <div className="popup-box">
-                        <h2>Work Order Details</h2><hr />
-                        <p><strong>Order Number:</strong> {selectedOrder.orderNumber}</p>
-                        <p><strong>Client Name:</strong> {selectedOrder.clientName}</p>
-                        <p><strong>Moving Date:</strong> {selectedOrder.movingDate}</p>
-                        <p><strong>Client Address:</strong> {selectedOrder.clientAddress}</p>
-                        <p><strong>Status:</strong> {selectedOrder.status}</p>
-                        <p><strong>Description:</strong> {selectedOrder.shortDesc}</p>
-                        <button className="update-button" onClick={() => setSelectedOrder(null)}>Update</button>
-                        <button className="close-button" onClick={() => setSelectedOrder(null)}>Close</button>
-                    </div>
+            <div className="popup-overlay">
+                <div className="popup-box">
+                <h2>Edit Work Order</h2>
+                <hr />
+                <form
+                    onSubmit={(e) => {
+                    e.preventDefault();
+                    handleUpdateOrder();
+                    }}
+                >
+                    <input
+                    type="text"
+                    value={selectedOrder.orderNumber}
+                    onChange={(e) =>
+                        setSelectedOrder({ ...selectedOrder, orderNumber: e.target.value })
+                    }
+                    required
+                    />
+                    <input
+                    type="text"
+                    value={selectedOrder.clientName}
+                    onChange={(e) =>
+                        setSelectedOrder({ ...selectedOrder, clientName: e.target.value })
+                    }
+                    required
+                    />
+                    <input
+                    type="text"
+                    value={selectedOrder.movingDate}
+                    onChange={(e) =>
+                        setSelectedOrder({ ...selectedOrder, movingDate: e.target.value })
+                    }
+                    required
+                    />
+                    <input
+                    type="text"
+                    value={selectedOrder.clientAddress}
+                    onChange={(e) =>
+                        setSelectedOrder({ ...selectedOrder, clientAddress: e.target.value })
+                    }
+                    required
+                    />
+                    <input
+                    type="text"
+                    value={selectedOrder.status}
+                    onChange={(e) =>
+                        setSelectedOrder({ ...selectedOrder, status: e.target.value })
+                    }
+                    required
+                    />
+                    <textarea
+                    value={selectedOrder.shortDesc}
+                    onChange={(e) =>
+                        setSelectedOrder({ ...selectedOrder, shortDesc: e.target.value })
+                    }
+                    required
+                    />
+                    <hr />
+                    <button type="submit" className="update-button">Save Changes</button>
+                    <button
+                    type="button"
+                    className="close-button"
+                    onClick={() => setSelectedOrder(null)}
+                    >
+                    Cancel
+                    </button>
+                </form>
                 </div>
+            </div>
             )}
 
     </div>
