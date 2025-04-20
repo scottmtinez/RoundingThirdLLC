@@ -23,6 +23,7 @@ function Dashboard() {
         const [showModal, setShowModal] = useState(false);
         const [workOrders, setWorkOrders] = useState([]);
         const [selectedOrder, setSelectedOrder] = useState(null);
+        const [trackingRows, setTrackingRows] = useState([]);
 
         const [formData, setFormData] = useState({
             name: "",
@@ -305,20 +306,7 @@ function Dashboard() {
                     }
             };
 
-
-    //
-
-    //
-
-     ///
-
-    //
-
-//
-
-//
-
-
+        // Handle Tracking Spreadsheet - Update Tracking Spreadsheet
     
     // Footer/Contact Form Popup - Send Message
         const handleChange = (e) => {
@@ -673,9 +661,11 @@ function Dashboard() {
             </div>
             )}
 
+            {/* END */}
     </div>
 
             {/* Tracking Spreadsheet */}
+            {/*}
             <div className="Dashboard-tracking-section">
             <h2>Tracking Sheet</h2>
             <table className="table-auto w-full border">
@@ -730,7 +720,7 @@ function Dashboard() {
                 >
                     + Add Row
                 </button>
-            </div>
+            </div> */}
 
             {/* Footer Section */}
             <footer className="Dashboard-footer">
